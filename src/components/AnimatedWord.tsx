@@ -1,10 +1,15 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
-const AnimatedWord = ({ text, className }: { text: string; className?: string }) => {
+interface AnimatedWordProps {
+  text: string;
+  className?: string;
+}
+
+const AnimatedWord: React.FC<AnimatedWordProps> = ({ text, className }) => {
   const words = text.split(" ");
 
-  const container = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
       opacity: 1,
@@ -12,7 +17,7 @@ const AnimatedWord = ({ text, className }: { text: string; className?: string })
     }),
   };
 
-  const child = {
+  const childVariants: Variants = {
     visible: {
       opacity: 1,
       y: 0,
@@ -32,10 +37,11 @@ const AnimatedWord = ({ text, className }: { text: string; className?: string })
       },
     },
   };
+
   return (
-    <motion.div variants={container} initial="hidden" animate="visible" className={`overflow-hidden flex ${className}`}>
+    <motion.div variants={containerVariants} initial="hidden" animate="visible" className={`overflow-hidden flex ${className}`}>
       {words.map((word, index) => (
-        <motion.span variants={child} className="mr-2" key={index}>
+        <motion.span variants={childVariants} className="mr-2" key={index}>
           {word}
         </motion.span>
       ))}
