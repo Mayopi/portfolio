@@ -8,6 +8,7 @@ import AnimatedWord from "@/components/AnimatedWord";
 import { FaPaperPlane, FaFilePdf } from "react-icons/fa";
 import About from "@/components/About";
 import Timeline from "@/components/Timeline";
+import Projects from "@/components/Projects";
 import useSWR from "swr";
 
 const raleway = Raleway({ subsets: ["latin"] });
@@ -16,13 +17,13 @@ const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 const Home: FC = (): ReactNode => {
   const { data, error, isLoading } = useSWR("https://api.github.com/users/Mayopi", fetcher);
-  const { data: repos, error: repos_error, isLoading: repos_loading } = useSWR(data ? data.repos_url : null, fetcher);
+  const { data: repos, error: repos_error, isLoading: repos_loading } = useSWR(data ? `${data.repos_url}?sort=created&per_page=5` : null, fetcher);
 
   return (
     <>
-      {isLoading ? (
+      {isLoading || repos_loading ? (
         <div className="loading loading-spinner loading-lg"></div>
-      ) : error ? (
+      ) : error || repos_error ? (
         <div>Something bad happened {":("}</div>
       ) : (
         <>
@@ -79,7 +80,11 @@ const Home: FC = (): ReactNode => {
               </div>
             </section>
 
+            <hr className="my-5 opacity-10" />
+            <Projects repositories={repos} />
+            <hr className="my-5 opacity-10" />
             <About data={data} />
+            <hr className="my-5 opacity-10" />
             <Timeline />
           </main>
         </>

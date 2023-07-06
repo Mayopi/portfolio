@@ -12,14 +12,8 @@ const Navbar = (props: Props) => {
         </Link>
       </div>
       <div className="flex-none gap-3">
-        <Link href={"/home"}>
-          <button className="btn btn-ghost hover:text-primary">Home</button>
-        </Link>
-        <Link href={"/about"}>
-          <button className="btn btn-ghost hover:text-primary">About</button>
-        </Link>
-        <Link href={"/contact"}>
-          <button className="btn btn-ghost hover:text-primary">Contact</button>
+        <Link href={"#about"}>
+          <button className="btn btn-ghost hover:text-primary">Learn More</button>
         </Link>
       </div>
     </div>

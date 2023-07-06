@@ -11,17 +11,18 @@ interface TimelineItemProps {
   title: string;
   content: string;
   date: string;
+  learning?: boolean;
 }
 
-const TimelineItem: React.FC<TimelineItemProps> = ({ layout = "right", title, content, date }): React.ReactNode => {
+const TimelineItem: React.FC<TimelineItemProps> = ({ layout = "right", title, content, date, learning = false }): React.ReactNode => {
   return (
     <div className="timeline-item w-full flex">
       {layout === "right" ? (
         <>
           <InView triggerOnce>
             {({ inView, ref }) => (
-              <motion.div ref={ref} initial={{ x: -100, opacity: 0 }} animate={inView ? { x: 0, opacity: 1 } : {}} transition={{ delay: 0.25 }} className="content w-1/2 max-h-[200px] pr-5">
-                <h3 className="text-xl lg:text-2xl">{title}</h3>
+              <motion.div ref={ref} initial={{ x: -100, opacity: 0 }} animate={inView ? { x: 0, opacity: 1 } : {}} transition={{ delay: 1 }} className="content w-1/2 max-h-[200px] pr-5">
+                <h3 className="text-xl lg:text-2xl text-primary">{title}</h3>
                 <p className="text-xs opacity-70 mt-2">{content}</p>
                 <p className="text-xs text-opacity-70 mt-2 flex items-center gap-2">
                   <BsFillCalendarWeekFill className="inline" /> {date}
@@ -33,7 +34,13 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ layout = "right", title, co
             {({ inView, ref }) => (
               <div className="line flex flex-col items-center">
                 <motion.div ref={ref} initial={{ scale: 0 }} animate={inView ? { scale: 1 } : {}} transition={{ delay: 0.25 }} className="dot w-3 h-3 rounded-full bg-secondary"></motion.div>
-                <motion.div ref={ref} initial={{ scale: 0 }} animate={inView ? { scale: 1 } : {}} transition={{ delay: 0.5 }} className="border-l-2 origin-top border-white border-opacity-50 h-[200px]"></motion.div>
+                <motion.div
+                  ref={ref}
+                  initial={{ scale: 0 }}
+                  animate={inView ? { scale: 1 } : {}}
+                  transition={{ delay: 0.5 }}
+                  className={`${learning ? "border-dashed" : ""} border-l-2 origin-top border-white border-opacity-50 h-[200px]`}
+                ></motion.div>
               </div>
             )}
           </InView>
@@ -45,14 +52,20 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ layout = "right", title, co
             {({ inView, ref }) => (
               <div className="line flex flex-col items-center pl-3">
                 <motion.div ref={ref} initial={{ scale: 0 }} animate={inView ? { scale: 1 } : {}} transition={{ delay: 0.25 }} className="dot w-3 h-3 rounded-full bg-secondary"></motion.div>
-                <motion.div ref={ref} initial={{ scale: 0 }} animate={inView ? { scale: 1 } : {}} transition={{ delay: 0.5 }} className="border-l-2 origin-top border-white border-opacity-50 h-[200px]"></motion.div>
+                <motion.div
+                  ref={ref}
+                  initial={{ scale: 0 }}
+                  animate={inView ? { scale: 1 } : {}}
+                  transition={{ delay: 0.5 }}
+                  className={`${learning ? "border-dashed" : ""} border-l-2 origin-top border-white border-opacity-50 h-[200px]`}
+                ></motion.div>
               </div>
             )}
           </InView>
           <InView triggerOnce>
             {({ inView, ref }) => (
-              <motion.div ref={ref} initial={{ x: 100, opacity: 0 }} animate={inView ? { x: 0, opacity: 1 } : {}} transition={{ delay: 0.25 }} className="content w-1/2 max-h-[200px] pl-5">
-                <h3 className="text-xl lg:text-2xl">{title}</h3>
+              <motion.div ref={ref} initial={{ x: 100, opacity: 0 }} animate={inView ? { x: 0, opacity: 1 } : {}} transition={{ delay: 1 }} className="content w-1/2 max-h-[200px] pl-5">
+                <h3 className="text-xl lg:text-2xl text-primary">{title}</h3>
                 <p className="text-xs opacity-70 mt-2">{content}</p>
                 <p className="text-xs text-opacity-70 mt-2 flex items-center gap-2">
                   <BsFillCalendarWeekFill className="inline" /> {date}
@@ -68,7 +81,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ layout = "right", title, co
 
 const Timeline: React.FC<TimelineProps> = (): React.ReactNode => {
   return (
-    <section className="timeline mt-36">
+    <section className="timeline mt-36 overflow-x-hidden">
       <h1 className="text-xl lg:text-2xl opacity-50 group flex gap-2 items-center">
         Time Line
         <Link href="#timeline">
@@ -96,6 +109,7 @@ const Timeline: React.FC<TimelineProps> = (): React.ReactNode => {
           content="Started exploring full-stack frameworks such as Next.js and Laravel, with a primary focus on Next.js. Developed dynamic web applications using server-side rendering, API integration, and front-end frameworks."
           date="2022 - now"
         />
+        <TimelineItem layout="left" title="Machine Learning & Data Science" content="Currently learning Machine Learning and Data Science Engineering with Python, Numpy, Pandas and Matplotlib" date="now" learning />
       </div>
     </section>
   );
