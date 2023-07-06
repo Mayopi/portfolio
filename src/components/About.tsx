@@ -84,20 +84,20 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
         <div className="w-full flex gap-2 justify-between">
           <InView triggerOnce>
             {({ inView, ref }) => (
-              <motion.div ref={ref} initial={{ y: 100, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ delay: 0.5 }} className="w-full lg:w-1/2 mt-2">
+              <motion.div ref={ref} initial={{ y: 100, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ delay: 0.5 }} className="w-full lg:w-1/2 mt-2 group">
                 <div className="card rounded h-[120px]  border border-white border-opacity-50 p-2">
                   <h3 className="text-primary lg:text-xl text-center">Front End Stack</h3>
                   <div className="card-body gap-2 flex-row w-full text-xs lg:text-xl flex flex-wrap p-0 lg:p-5">
-                    <p>
+                    <p className="group-hover:text-cyan-500 transition">
                       <FaReact className="inline" /> React
                     </p>
-                    <p>
+                    <p className="group-hover:text-teal-500 transition">
                       <SiTailwindcss className="inline" /> Tailwindcss
                     </p>
-                    <p>
+                    <p className="group-hover:text-yellow-500 transition">
                       <SiJavascript className="inline" /> Javascript
                     </p>
-                    <p>
+                    <p className="group-hover:text-orange-500 transition">
                       <SiHtml5 className="inline" /> HTML
                     </p>
                   </div>
@@ -107,17 +107,17 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
           </InView>
           <InView triggerOnce>
             {({ inView, ref }) => (
-              <motion.div ref={ref} initial={{ y: 100, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ delay: 0.75 }} className="w-full lg:w-1/2 mt-2">
+              <motion.div ref={ref} initial={{ y: 100, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ delay: 0.75 }} className="w-full lg:w-1/2 mt-2 group">
                 <div className="card rounded h-[120px]  border border-white border-opacity-50 p-2">
                   <h3 className="text-primary lg:text-xl text-center">Back End Stack</h3>
                   <div className="card-body gap-2 flex-row w-full text-xs lg:text-xl flex flex-wrap p-0 lg:p-5">
                     <p>
-                      <FaPython className="inline" /> Python
+                      <FaPython className="inline" /> <span className="group-hover:bg-gradient-to-r group-hover:text-transparent group-hover:bg-clip-text group-hover:from-blue-500 group-hover:to-yellow-500 transition">Python</span>
                     </p>
-                    <p>
+                    <p className="group-hover:text-green-700 transition">
                       <FaNodeJs className="inline" /> NodeJS
                     </p>
-                    <p>
+                    <p className="group-hover:text-blue-500 transition">
                       <SiTypescript className="inline" /> Typescript
                     </p>
                   </div>
@@ -129,23 +129,23 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
         <div className="w-full flex gap-2 justify-between">
           <InView triggerOnce>
             {({ inView, ref }) => (
-              <motion.div ref={ref} initial={{ y: 100, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ delay: 0.5 }} className="w-full lg:w-1/2 mt-2">
+              <motion.div ref={ref} initial={{ y: 100, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ delay: 0.5 }} className="w-full lg:w-1/2 mt-2 group">
                 <div className="card rounded h-[120px]  border border-white border-opacity-50 p-2">
                   <h3 className="text-primary lg:text-xl text-center">Tools & Framework</h3>
                   <div className="card-body gap-2 flex-row w-full text-xs lg:text-xl flex flex-wrap p-0 lg:p-5">
-                    <p>
+                    <p className="group-hover:text-red-500 transition">
                       <FaGitAlt className="inline" /> Git
                     </p>
-                    <p>
+                    <p className="group-hover:text-gray-500 transition">
                       <FaGithub className="inline" /> Github
                     </p>
-                    <p>
+                    <p className="group-hover:text-gray-500 transition">
                       <TbBrandNextjs className="inline" /> Next JS
                     </p>
-                    <p>
+                    <p className="group-hover:text-red-500 transition">
                       <FaLaravel className="inline" /> Laravel
                     </p>
-                    <p>
+                    <p className="group-hover:text-yellow-500 transition">
                       <SiExpress className="inline" /> Express
                     </p>
                   </div>
@@ -155,14 +155,14 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
           </InView>
           <InView triggerOnce>
             {({ inView, ref }) => (
-              <motion.div ref={ref} initial={{ y: 100, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ delay: 0.75 }} className="w-full lg:w-1/2 mt-2">
+              <motion.div ref={ref} initial={{ y: 100, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ delay: 0.75 }} className="w-full lg:w-1/2 mt-2 group">
                 <div className="card rounded h-[120px]  border border-white border-opacity-50 p-2">
                   <h3 className="text-primary lg:text-xl text-center">Databases</h3>
                   <div className="card-body gap-2 flex-row w-full text-xs lg:text-xl flex flex-wrap p-0 lg:p-5">
-                    <p>
+                    <p className="group-hover:text-blue-500 transition">
                       <SiMysql className="inline" /> MySQL
                     </p>
-                    <p>
+                    <p className="group-hover:text-green-500 transition">
                       <SiMongodb className="inline" /> MongoDB
                     </p>
                   </div>
