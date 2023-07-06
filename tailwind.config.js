@@ -14,6 +14,7 @@ module.exports = {
     themes: [
       {
         dark: {
+          "base-200": "#181c21",
           primary: "#E23E57",
           secondary: "#00ADB5",
           accent: "#E84545",
@@ -24,11 +25,6 @@ module.exports = {
           success: "#4CAF50",
           info: "#2196F3",
           text: "#EEEEEE",
-          "text-muted": "#B0B0B0",
-          "text-inverse": "#121212",
-          "link-primary": "#00ADB5",
-          "link-secondary": "#393E46",
-          "link-accent": "#F9DC5C",
         },
       },
     ],

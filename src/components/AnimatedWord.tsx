@@ -6,7 +6,7 @@ interface AnimatedWordProps {
   className?: string;
 }
 
-const AnimatedWord: React.FC<AnimatedWordProps> = ({ text, className }) => {
+const AnimatedWord: React.FC<AnimatedWordProps> = ({ text, className }): React.ReactNode => {
   const words = text.split(" ");
 
   const containerVariants: Variants = {

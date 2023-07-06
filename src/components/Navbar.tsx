@@ -7,7 +7,7 @@ const Navbar = (props: Props) => {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1 text-primary">
-        <Link href={"/"} className="btn btn-ghost normal-case text-xl">
+        <Link href={"/"} className="btn btn-ghost normal-case text-xl tracking-wider">
           Mayopi
         </Link>
       </div>
