@@ -9,6 +9,7 @@ import { FaPaperPlane, FaFilePdf } from "react-icons/fa";
 import About from "@/components/About";
 import Timeline from "@/components/Timeline";
 import Projects from "@/components/Projects";
+import Footer from "@/components/Footer";
 import useSWR from "swr";
 
 const raleway = Raleway({ subsets: ["latin"] });
@@ -87,6 +88,7 @@ const Home: FC = (): ReactNode => {
             <hr className="my-5 opacity-10" />
             <Timeline />
           </main>
+          <Footer />
         </>
       )}
     </>
