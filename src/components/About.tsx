@@ -34,8 +34,8 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
           </motion.p>
         </div>
 
-        <div className="w-full lg:w-1/2 cards mt-5 flex gap-3">
-          <div className="card w-52 h-36 rounded bg-base-200 shadow-xl">
+        <div className="w-full lg:w-1/2 cards mt-5 flex flex-wrap justify-center items-center gap-3">
+          <div className="card w-full lg:w-52 h-36 rounded bg-base-200 shadow-xl">
             <div className="card-body p-3 flex items-center flex-col">
               <h3 className="">
                 <BsCode className="text-primary text-xl" />
@@ -47,7 +47,7 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
             </div>
           </div>
 
-          <div className="card w-52 h-36 rounded bg-base-200 shadow-xl">
+          <div className="card w-full lg:w-52 h-36 rounded bg-base-200 shadow-xl">
             <div className="card-body p-3 flex items-center flex-col">
               <h3 className="">
                 <FaTrophy className="text-primary text-xl" />
@@ -61,7 +61,7 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
             </div>
           </div>
 
-          <div className="card w-52 h-36 rounded bg-base-200 shadow-xl">
+          <div className="card w-full lg:w-52 h-36 rounded bg-base-200 shadow-xl">
             <div className="card-body p-3 flex items-center flex-col">
               <h3 className="">
                 <MdLocationOn className="text-primary text-xl" />
@@ -85,9 +85,9 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
           <InView triggerOnce>
             {({ inView, ref }) => (
               <motion.div ref={ref} initial={{ y: 100, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ delay: 0.5 }} className="w-full lg:w-1/2 mt-2">
-                <div className="card rounded min-h-[120px]  border border-white border-opacity-50 p-2">
-                  <h3 className="text-primary text-xl text-center">Front End Stack</h3>
-                  <div className="card-body gap-2 flex-row w-full lg:text-xl flex flex-wrap p-0 lg:p-5">
+                <div className="card rounded h-[120px]  border border-white border-opacity-50 p-2">
+                  <h3 className="text-primary lg:text-xl text-center">Front End Stack</h3>
+                  <div className="card-body gap-2 flex-row w-full text-xs lg:text-xl flex flex-wrap p-0 lg:p-5">
                     <p>
                       <FaReact className="inline" /> React
                     </p>
@@ -108,9 +108,9 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
           <InView triggerOnce>
             {({ inView, ref }) => (
               <motion.div ref={ref} initial={{ y: 100, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ delay: 0.75 }} className="w-full lg:w-1/2 mt-2">
-                <div className="card rounded min-h-[120px]  border border-white border-opacity-50 p-2">
-                  <h3 className="text-primary text-xl text-center">Back End Stack</h3>
-                  <div className="card-body gap-2 flex-row w-full lg:text-xl flex flex-wrap p-0 lg:p-5">
+                <div className="card rounded h-[120px]  border border-white border-opacity-50 p-2">
+                  <h3 className="text-primary lg:text-xl text-center">Back End Stack</h3>
+                  <div className="card-body gap-2 flex-row w-full text-xs lg:text-xl flex flex-wrap p-0 lg:p-5">
                     <p>
                       <FaPython className="inline" /> Python
                     </p>
@@ -130,9 +130,9 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
           <InView triggerOnce>
             {({ inView, ref }) => (
               <motion.div ref={ref} initial={{ y: 100, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ delay: 0.5 }} className="w-full lg:w-1/2 mt-2">
-                <div className="card rounded min-h-[120px]  border border-white border-opacity-50 p-2">
-                  <h3 className="text-primary text-xl text-center">Tools & Framework</h3>
-                  <div className="card-body gap-2 flex-row w-full lg:text-xl flex flex-wrap p-0 lg:p-5">
+                <div className="card rounded h-[120px]  border border-white border-opacity-50 p-2">
+                  <h3 className="text-primary lg:text-xl text-center">Tools & Framework</h3>
+                  <div className="card-body gap-2 flex-row w-full text-xs lg:text-xl flex flex-wrap p-0 lg:p-5">
                     <p>
                       <FaGitAlt className="inline" /> Git
                     </p>
@@ -156,9 +156,9 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
           <InView triggerOnce>
             {({ inView, ref }) => (
               <motion.div ref={ref} initial={{ y: 100, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ delay: 0.75 }} className="w-full lg:w-1/2 mt-2">
-                <div className="card rounded min-h-[120px]  border border-white border-opacity-50 p-2">
-                  <h3 className="text-primary text-xl text-center">Databases</h3>
-                  <div className="card-body gap-2 flex-row w-full lg:text-xl flex flex-wrap p-0 lg:p-5">
+                <div className="card rounded h-[120px]  border border-white border-opacity-50 p-2">
+                  <h3 className="text-primary lg:text-xl text-center">Databases</h3>
+                  <div className="card-body gap-2 flex-row w-full text-xs lg:text-xl flex flex-wrap p-0 lg:p-5">
                     <p>
                       <SiMysql className="inline" /> MySQL
                     </p>
