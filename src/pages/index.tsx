@@ -1,5 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
 import Head from "next/head";
 import { FC, ReactNode } from "react";
 import { Raleway } from "next/font/google";
@@ -9,7 +7,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import AnimatedWord from "@/components/AnimatedWord";
 import { FaPaperPlane, FaFilePdf } from "react-icons/fa";
 import About from "@/components/About";
-
+import Timeline from "@/components/Timeline";
 import useSWR from "swr";
 
 const raleway = Raleway({ subsets: ["latin"] });
@@ -82,6 +80,7 @@ const Home: FC = (): ReactNode => {
             </section>
 
             <About data={data} />
+            <Timeline />
           </main>
         </>
       )}

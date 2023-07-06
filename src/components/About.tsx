@@ -2,8 +2,9 @@ import React from "react";
 import { MdLocationOn } from "react-icons/md";
 import { FiLink } from "react-icons/fi";
 import { BsCode } from "react-icons/bs";
-import { SiMysql, SiTailwindcss, SiJavascript, SiHtml5, SiMongodb, SiTypescript, SiVercel } from "react-icons/si";
-import { FaTrophy, FaReact, FaNodeJs, FaPython, FaGitAlt, FaGithub } from "react-icons/fa";
+import { SiMysql, SiTailwindcss, SiJavascript, SiHtml5, SiMongodb, SiTypescript, SiExpress } from "react-icons/si";
+import { FaTrophy, FaReact, FaNodeJs, FaPython, FaGitAlt, FaGithub, FaLaravel } from "react-icons/fa";
+import { TbBrandNextjs } from "react-icons/tb";
 import { InView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -84,7 +85,7 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
           <InView triggerOnce>
             {({ inView, ref }) => (
               <motion.div ref={ref} initial={{ y: 100, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ delay: 0.5 }} className="w-full lg:w-1/2 mt-2">
-                <div className="card rounded  border border-white border-opacity-50 p-2">
+                <div className="card rounded min-h-[120px]  border border-white border-opacity-50 p-2">
                   <h3 className="text-primary text-xl text-center">Front End Stack</h3>
                   <div className="card-body gap-2 flex-row w-full lg:text-xl flex flex-wrap p-0 lg:p-5">
                     <p>
@@ -107,7 +108,7 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
           <InView triggerOnce>
             {({ inView, ref }) => (
               <motion.div ref={ref} initial={{ y: 100, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ delay: 0.75 }} className="w-full lg:w-1/2 mt-2">
-                <div className="card rounded  border border-white border-opacity-50 p-2">
+                <div className="card rounded min-h-[120px]  border border-white border-opacity-50 p-2">
                   <h3 className="text-primary text-xl text-center">Back End Stack</h3>
                   <div className="card-body gap-2 flex-row w-full lg:text-xl flex flex-wrap p-0 lg:p-5">
                     <p>
@@ -129,14 +130,23 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
           <InView triggerOnce>
             {({ inView, ref }) => (
               <motion.div ref={ref} initial={{ y: 100, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ delay: 0.5 }} className="w-full lg:w-1/2 mt-2">
-                <div className="card rounded  border border-white border-opacity-50 p-2">
-                  <h3 className="text-primary text-xl text-center">Tools</h3>
+                <div className="card rounded min-h-[120px]  border border-white border-opacity-50 p-2">
+                  <h3 className="text-primary text-xl text-center">Tools & Framework</h3>
                   <div className="card-body gap-2 flex-row w-full lg:text-xl flex flex-wrap p-0 lg:p-5">
                     <p>
                       <FaGitAlt className="inline" /> Git
                     </p>
                     <p>
                       <FaGithub className="inline" /> Github
+                    </p>
+                    <p>
+                      <TbBrandNextjs className="inline" /> Next JS
+                    </p>
+                    <p>
+                      <FaLaravel className="inline" /> Laravel
+                    </p>
+                    <p>
+                      <SiExpress className="inline" /> Express
                     </p>
                   </div>
                 </div>
@@ -146,7 +156,7 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
           <InView triggerOnce>
             {({ inView, ref }) => (
               <motion.div ref={ref} initial={{ y: 100, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ delay: 0.75 }} className="w-full lg:w-1/2 mt-2">
-                <div className="card rounded  border border-white border-opacity-50 p-2">
+                <div className="card rounded min-h-[120px]  border border-white border-opacity-50 p-2">
                   <h3 className="text-primary text-xl text-center">Databases</h3>
                   <div className="card-body gap-2 flex-row w-full lg:text-xl flex flex-wrap p-0 lg:p-5">
                     <p>
