@@ -27,8 +27,8 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
       </h1>
 
       <div className="row flex flex-wrap w-full">
-        <div className="w-full lg:w-1/2 pr-2">
-          <h1 className="text-xl lg:text-3xl mt-5">Curious about me?</h1>
+        <div className="w-full lg:w-1/2 lg:pr-2">
+          <h1 className="text-xl lg:text-3xl mt-5">Curious About Me?</h1>
           <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} className="opacity-50">
             Combining my expertise and passion for technology development, I help companies and communities solve problems and build high-quality applications. I&apos;m ready to be a part of your future solution.
           </motion.p>
@@ -41,7 +41,7 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
                 <BsCode className="text-primary text-xl" />
               </h3>
               <h1>Experience</h1>
-              <p className="text-xs text-justify">
+              <p className="text-xs text-center">
                 Approximately <span className="text-secondary text-xs">2</span> Years worth of experience
               </p>
             </div>
@@ -53,7 +53,7 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
                 <FaTrophy className="text-primary text-xl" />
               </h3>
               <h1>Achievement</h1>
-              <p className="text-xs text-justify">
+              <p className="text-xs text-center">
                 <Link href="/certificate" className="link">
                   See Certificates
                 </Link>
@@ -68,7 +68,7 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
               </h3>
               <h1>Location</h1>
               <Link href={`https://google.com/maps/place/${data.location}`} target={"__blank"}>
-                <p className="text-xs text-justify link link-secondary">
+                <p className="text-xs link link-secondary text-center">
                   <span className="text-secondary text-xs">{data.location}</span>
                 </p>
               </Link>

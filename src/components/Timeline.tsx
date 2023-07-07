@@ -21,7 +21,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ layout = "right", title, co
         <>
           <InView triggerOnce>
             {({ inView, ref }) => (
-              <motion.div ref={ref} initial={{ x: -100, opacity: 0 }} animate={inView ? { x: 0, opacity: 1 } : {}} transition={{ delay: 1 }} className="content w-1/2 max-h-[200px] pr-5">
+              <motion.div ref={ref} initial={{ x: -100, opacity: 0 }} animate={inView ? { x: 0, opacity: 1 } : {}} transition={{ delay: 1 }} className="content w-1/2 max-h-[150px] pr-5">
                 <h3 className="text-xl lg:text-2xl text-primary">{title}</h3>
                 <p className="text-xs opacity-70 mt-2">{content}</p>
                 <p className="text-xs text-opacity-70 mt-2 flex items-center gap-2">
@@ -39,7 +39,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ layout = "right", title, co
                   initial={{ scale: 0 }}
                   animate={inView ? { scale: 1 } : {}}
                   transition={{ delay: 0.5 }}
-                  className={`${learning ? "border-dashed" : ""} border-l-2 origin-top border-white border-opacity-50 h-[200px]`}
+                  className={`${learning ? "border-dashed" : ""} border-l-2 origin-top border-white border-opacity-50 h-[150px]`}
                 ></motion.div>
               </div>
             )}

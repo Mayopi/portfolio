@@ -84,7 +84,7 @@ const Projects: React.FC<ProjectListProps> = ({ repositories }) => {
 
       <h1 className="text-xl lg:text-2xl mt-10 text-center opacity-50">Want to Explore More Projects?</h1>
       <Link href={"https://github.com/Mayopi"} className="text-center flex w-full items-center justify-center" target="__blank">
-        <button className="mt-5 btn font-extralight btn-primary">
+        <button className="mt-5 btn font-base btn-primary">
           Explore My Github <FaGithub className="inline text-xl" />
         </button>
       </Link>

@@ -9,6 +9,7 @@ import { FaPaperPlane, FaFilePdf } from "react-icons/fa";
 import About from "@/components/About";
 import Timeline from "@/components/Timeline";
 import Projects from "@/components/Projects";
+import Internships from "@/components/Internships";
 import Footer from "@/components/Footer";
 import useSWR from "swr";
 
@@ -85,6 +86,8 @@ const Home: FC = (): ReactNode => {
             <Projects repositories={repos} />
             <hr className="my-5 opacity-10" />
             <About data={data} />
+            <hr className="my-5 opacity-10" />
+            <Internships />
             <hr className="my-5 opacity-10" />
             <Timeline />
           </main>
