@@ -2,9 +2,11 @@ import React, { useState, useRef } from "react";
 import Link from "next/link";
 import { FiLink } from "react-icons/fi";
 import { BsCode } from "react-icons/bs";
-import { FaCopy, FaGithub } from "react-icons/fa";
+import { SiTypescript, SiJavascript, SiHtml5 } from "react-icons/si";
+import { FaCopy, FaGithub, FaPython, FaDocker, FaCss3Alt } from "react-icons/fa";
 import { InView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+import useSWR from "swr";
 
 interface GithubRepository {
   clone_url: string;
@@ -13,15 +15,41 @@ interface GithubRepository {
   name: string;
   homepage: string;
   html_url: string;
+  languages_url: string;
 }
 
 interface ProjectListProps {
   repositories: GithubRepository[];
 }
 
+const fetcher = (url: string) => fetch(url).then((r) => r.json());
+
+const LanguageLogo: React.FC<{ language: string }> = ({ language }): React.ReactNode => {
+  switch (language) {
+    case "TypeScript":
+      return <SiTypescript className="text-lg transition hover:text-blue-500" />;
+    case "JavaScript":
+      return <SiJavascript className="text-lg transition hover:text-yellow-500" />;
+    case "HTML":
+      return <SiHtml5 className="text-lg transition hover:text-orange-500" />;
+    case "Python":
+      return <FaPython className="text-lg transition hover:text-blue-700" />;
+    case "Dockerfile":
+      return <FaDocker className="text-lg transition hover:text-blue-500" />;
+    case "CSS":
+      return <FaCss3Alt className="text-lg transition hover:text-blue-400" />;
+    default:
+      return null;
+  }
+};
+
 const RepositoryCard: React.FC<{ repo: GithubRepository; index: number }> = ({ repo, index }) => {
   const [isCopied, setIsCopied] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const { data: repoLanguages, error: repoLanguages_error, isLoading: repoLanguages_loading } = useSWR<{ [key: string]: number }>(repo.languages_url, fetcher);
+
+  const languageEntries = repoLanguages ? Object.entries(repoLanguages) : [];
 
   const handleCopy = () => {
     if (inputRef.current) {
@@ -46,6 +74,14 @@ const RepositoryCard: React.FC<{ repo: GithubRepository; index: number }> = ({ r
             </button>
             <h1 className="text-lg lg:text-2xl mt-5 text-primary">{repo.name}</h1>
             <p>{repo.description || "No Description Provided"}</p>
+
+            <div className="languages flex gap-2">
+              {languageEntries.map(([language]) => (
+                <div key={language}>
+                  <LanguageLogo language={language} />
+                </div>
+              ))}
+            </div>
             <Link href={repo.html_url} target="_blank" className="hover:link link-secondary">
               Source Code <BsCode className="inline" />
             </Link>

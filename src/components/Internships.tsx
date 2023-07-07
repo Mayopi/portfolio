@@ -7,7 +7,7 @@ const Internships: React.FC = (): React.ReactNode => {
   return (
     <section className="internships mt-36" id="internships">
       <h1 className="text-xl lg:text-2xl opacity-50 group flex gap-2 items-center">
-        Internship
+        Internships
         <Link href="#about">
           <FiLink className="font-extralight hidden group-hover:inline" />
         </Link>

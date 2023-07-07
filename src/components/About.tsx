@@ -3,7 +3,7 @@ import { MdLocationOn } from "react-icons/md";
 import { FiLink } from "react-icons/fi";
 import { BsCode } from "react-icons/bs";
 import { SiMysql, SiTailwindcss, SiJavascript, SiHtml5, SiMongodb, SiTypescript, SiExpress } from "react-icons/si";
-import { FaTrophy, FaReact, FaNodeJs, FaPython, FaGitAlt, FaGithub, FaLaravel } from "react-icons/fa";
+import { FaTrophy, FaReact, FaNodeJs, FaPython, FaGitAlt, FaGithub, FaLaravel, FaDocker } from "react-icons/fa";
 import { TbBrandNextjs } from "react-icons/tb";
 import { InView } from "react-intersection-observer";
 import { motion } from "framer-motion";
@@ -78,8 +78,13 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
       </div>
 
       <div className="row mt-10 w-full">
-        <h1 className="text-xl lg:text-2xl opacity-50">What Can I Do?</h1>
-        <h1 className="text-xl lg:text-3xl mt-5">My Skill are Consist of</h1>
+        <h1 className="text-xl lg:text-2xl opacity-50 group flex gap-2 items-center">
+          Skills
+          <Link href="#about">
+            <FiLink className="font-extralight hidden group-hover:inline" />
+          </Link>
+        </h1>
+        <h1 className="text-xl lg:text-3xl mt-5">What Can I Do?</h1>
 
         <div className="w-full flex gap-2 justify-between">
           <InView triggerOnce>
@@ -147,6 +152,9 @@ const About: React.FC<AboutProps> = ({ data }): React.ReactNode => {
                     </p>
                     <p className="group-hover:text-yellow-500 transition">
                       <SiExpress className="inline" /> Express
+                    </p>
+                    <p className="group-hover:text-blue-500 transition">
+                      <FaDocker className="inline" /> Docker
                     </p>
                   </div>
                 </div>
