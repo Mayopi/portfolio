@@ -11,6 +11,9 @@ const Footer: React.FC = (): React.ReactNode => {
           <Link href={"/blogs"} className="link link-hover">
             Blogs
           </Link>
+          <Link href={"/blogs"} className="link link-hover">
+            Guest Book
+          </Link>
           <Link href={"/achievements"} className="link link-hover">
             Achievements
           </Link>

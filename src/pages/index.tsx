@@ -53,7 +53,7 @@ const Home: FC = (): ReactNode => {
                   <button className="btn btn-primary">
                     Send Message <FaPaperPlane className="inline" />
                   </button>
-                  <Link href={"/pdf/Mayopi-Resume.pdf"} download={"Mayopi-Resume.pdf"}>
+                  <Link href={"/pdf/Mayopi-Resume.pdf"} download={"Mayopi-Resume.pdf"} target="__blank">
                     <button className="btn btn-outline btn-primary">
                       Download CV <FaFilePdf className="inline" />
                     </button>
