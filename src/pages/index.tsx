@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { FC, ReactNode } from "react";
 import { Raleway } from "next/font/google";
 import Navbar from "@/components/Navbar";
@@ -45,16 +46,18 @@ const Home: FC = (): ReactNode => {
                 <AnimatedWord text="Software Engineer" className="mt-5 lg:text-lg text-secondary" />
                 <motion.hr initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 1, type: "spring" }} className="border origin-top-left border-t-2 my-2 max-w-[30%] border-secondary" />
                 <p className="lg:text-lg font-extralight">
-                  I&apos;m a {new Date().getFullYear() - 2004} year old passionate Tech Enthusiast, constantly exploring the ever-evolving world of technology and seeking innovative solutions. With a deep curiosity and eagerness to learn, I
-                  thrive on embracing new challenges and leveraging cutting-edge tools to create impactful and meaningful experiences.
+                  I&apos;m a {Math.abs(new Date().getFullYear() - new Date(2004, 5, 24).getFullYear())} year old passionate Tech Enthusiast, constantly exploring the ever-evolving world of technology and seeking innovative solutions. With a
+                  deep curiosity and eagerness to learn, I thrive on embracing new challenges and leveraging cutting-edge tools to create impactful and meaningful experiences.
                 </p>
                 <div className="mt-2 flex gap-3  items-center">
                   <button className="btn btn-primary">
                     Send Message <FaPaperPlane className="inline" />
                   </button>
-                  <button className="btn btn-outline btn-primary">
-                    Download CV <FaFilePdf className="inline" />
-                  </button>
+                  <Link href={"/pdf/Mayopi-Resume.pdf"} download={"Mayopi-Resume.pdf"}>
+                    <button className="btn btn-outline btn-primary">
+                      Download CV <FaFilePdf className="inline" />
+                    </button>
+                  </Link>
                 </div>
               </div>
 

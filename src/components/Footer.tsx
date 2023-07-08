@@ -17,6 +17,7 @@ const Footer: React.FC = (): React.ReactNode => {
         </div>
         <div>
           <span className="footer-title">Contact</span>
+          <Link href={"mailto:cyade007@gmail.com"}>cyade007@gmail.com</Link>
           <Link href={"/contact"}>Message Me</Link>
         </div>
       </footer>
