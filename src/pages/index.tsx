@@ -13,6 +13,7 @@ import Projects from "@/components/Projects";
 import Internships from "@/components/Internships";
 import Footer from "@/components/Footer";
 import useSWR from "swr";
+import { signIn } from "next-auth/react";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
