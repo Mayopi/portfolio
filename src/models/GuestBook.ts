@@ -1,14 +1,19 @@
 import { Schema, model, models } from "mongoose";
 
-interface GuestBookOwner {
+interface GuestBookUser {
   name: string;
-  provider: string;
+  email: string;
+  image: string;
 }
 
 interface GuestBookDocument extends Document {
   title: string;
   content: string;
-  owner: GuestBookOwner;
+  owner: GuestBookUser;
+  upvotes: {
+    users: GuestBookUser[];
+    count: number;
+  };
 }
 
 const GuestBookSchema = new Schema(
@@ -17,7 +22,8 @@ const GuestBookSchema = new Schema(
     content: String,
     owner: {
       name: String,
-      provider: String,
+      email: String,
+      image: String,
     },
   },
   { timestamps: true }

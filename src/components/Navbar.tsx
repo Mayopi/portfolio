@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaBookReader } from "react-icons/fa";
 
 type Props = {};
 
@@ -13,6 +13,11 @@ const Navbar: React.FC = (): React.ReactNode => {
         </Link>
       </div>
       <div className="flex-none gap-3">
+        <Link href={"/guestbook"}>
+          <button className="btn btn-ghost hover:text-primary text-xl">
+            <FaBookReader />
+          </button>
+        </Link>
         <Link href={"https://github.com/Mayopi"} target="__blank">
           <button className="btn btn-ghost hover:text-primary text-xl">
             <FaGithub />
