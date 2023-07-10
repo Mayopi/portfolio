@@ -65,7 +65,7 @@ const RepositoryCard: React.FC<{ repo: GithubRepository; index: number }> = ({ r
               <p className="absolute top-1 left-1 opacity-50">Clone Github Repository</p>
             </div>
             <CopyToClipboard text={repo.clone_url}>
-              <button className="absolute top-2 right-2 btn btn-outline btn-primary opacity-50 aspect-square flex items-center justify-center" onClick={() => setIsCopied(true)} disabled={isCopied}>
+              <button className="absolute top-2 right-2 btn btn-outline btn-primary aspect-square flex items-center justify-center" onClick={() => setIsCopied(true)} disabled={isCopied}>
                 {isCopied ? "Copied!" : <FaCopy />}
               </button>
             </CopyToClipboard>

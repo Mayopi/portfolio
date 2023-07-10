@@ -123,7 +123,7 @@ const NewGuestBook: FC = (): ReactNode => {
                         component: Heading1,
                       },
                       code: {
-                        component: CodeBlock,
+                        component: ({ children, className }) => <CodeBlock className={className}>{children}</CodeBlock>,
                       },
                     },
                   }}
