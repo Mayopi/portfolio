@@ -7,6 +7,7 @@ import { BiHeading, BiBold, BiItalic } from "react-icons/bi";
 import { GoQuote } from "react-icons/go";
 import { BsCode, BsListOl, BsListTask } from "react-icons/bs";
 import { FiLink } from "react-icons/fi";
+import { FaMarkdown } from "react-icons/fa";
 import Markdown from "markdown-to-jsx";
 import CodeBlock from "@/components/CodeBlock";
 
@@ -47,7 +48,7 @@ const NewGuestBook: FC = (): ReactNode => {
       <Head>
         <title>Portfolio - New Guestbook</title>
       </Head>
-      <main className="mx-5 pb-24 lg:mx-16">
+      <main className="mx-5 pb-24 lg:mx-16 min-h-screen">
         <Navbar />
 
         <section className="w-full">
@@ -131,15 +132,21 @@ const NewGuestBook: FC = (): ReactNode => {
                 </Markdown>
               </article>
             ) : (
-              <textarea
-                name="content"
-                id="guestbook"
-                rows={30}
-                className="bg-transparent rounded-b w-full h-[400px] border border-slate-700 p-3"
-                placeholder="Type Here"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-              ></textarea>
+              <div className="flex flex-col w-full">
+                <textarea
+                  name="content"
+                  id="guestbook"
+                  rows={30}
+                  className="bg-transparent rounded-b w-full h-[400px] border border-slate-700 p-3"
+                  placeholder="Type Here"
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                ></textarea>
+
+                <button className="btn btn-primary rounded text-lg mt-5" type="submit">
+                  Submit
+                </button>
+              </div>
             )}
           </form>
         </section>

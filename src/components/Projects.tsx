@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { FiLink } from "react-icons/fi";
 import { BsCode } from "react-icons/bs";
@@ -7,6 +7,7 @@ import { FaCopy, FaGithub, FaPython, FaDocker, FaCss3Alt } from "react-icons/fa"
 import { InView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import useSWR from "swr";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 interface GithubRepository {
   clone_url: string;
@@ -45,20 +46,15 @@ const LanguageLogo: React.FC<{ language: string }> = ({ language }): React.React
 
 const RepositoryCard: React.FC<{ repo: GithubRepository; index: number }> = ({ repo, index }) => {
   const [isCopied, setIsCopied] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
+  }, [isCopied]);
 
   const { data: repoLanguages, error: repoLanguages_error, isLoading: repoLanguages_loading } = useSWR<{ [key: string]: number }>(repo.languages_url, fetcher);
 
   const languageEntries = repoLanguages ? Object.entries(repoLanguages) : [];
-
-  const handleCopy = () => {
-    if (inputRef.current) {
-      inputRef.current.select();
-      document.execCommand("copy");
-      setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2000); // Reset the copied state after 2 seconds
-    }
-  };
 
   return (
     <InView triggerOnce>
@@ -66,12 +62,13 @@ const RepositoryCard: React.FC<{ repo: GithubRepository; index: number }> = ({ r
         <motion.div ref={ref} initial={{ scale: 0, opacity: 0 }} animate={inView ? { scale: 1, opacity: 1 } : {}} transition={{ delay: 0.25 * index }} className="card w-full px-3 lg:w-1/2 mt-10">
           <div className="card-body relative bg-base-200 p-5 rounded-lg">
             <div className="relative">
-              <input ref={inputRef} id={repo.name} className="opacity-0 absolute inset-0 w-full h-full bg-transparent border-none outline-none" value={repo.clone_url} readOnly />
               <p className="absolute top-1 left-1 opacity-50">Clone Github Repository</p>
             </div>
-            <button className="absolute top-2 right-2 btn btn-outline btn-primary opacity-50 aspect-square flex items-center justify-center" onClick={handleCopy} disabled={isCopied}>
-              {isCopied ? "Copied!" : <FaCopy />}
-            </button>
+            <CopyToClipboard text={repo.clone_url}>
+              <button className="absolute top-2 right-2 btn btn-outline btn-primary opacity-50 aspect-square flex items-center justify-center" onClick={() => setIsCopied(true)} disabled={isCopied}>
+                {isCopied ? "Copied!" : <FaCopy />}
+              </button>
+            </CopyToClipboard>
             <h1 className="text-lg lg:text-2xl mt-5 text-primary">{repo.name}</h1>
             <p>{repo.description || "No Description Provided"}</p>
 
