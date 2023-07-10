@@ -16,6 +16,7 @@
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.7",
     "framer-motion": "^10.12.18",
+    "lottie-react": "^2.4.0",
     "markdown-to-jsx": "^7.2.1",
     "mongoose": "^7.3.2",
     "next": "13.4.7",

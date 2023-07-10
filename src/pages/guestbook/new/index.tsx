@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useState, MouseEvent } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Head from "next/head";
@@ -7,9 +7,10 @@ import { BiHeading, BiBold, BiItalic } from "react-icons/bi";
 import { GoQuote } from "react-icons/go";
 import { BsCode, BsListOl, BsListTask } from "react-icons/bs";
 import { FiLink } from "react-icons/fi";
-import { FaMarkdown } from "react-icons/fa";
 import Markdown from "markdown-to-jsx";
 import CodeBlock from "@/components/CodeBlock";
+import { useSession } from "next-auth/react";
+import Authorization from "@/components/Authorization";
 
 const Heading1: FC<{ children: ReactNode }> = ({ children }): ReactNode => {
   return (
@@ -23,6 +24,7 @@ const Heading1: FC<{ children: ReactNode }> = ({ children }): ReactNode => {
 const NewGuestBook: FC = (): ReactNode => {
   const [content, setContent] = useState("");
   const [preview, setPreview] = useState(false);
+  const { data, status } = useSession();
 
   const markdownSyntax = (startTag: string, endTag: string) => {
     const textarea = document.getElementById("guestbook") as HTMLTextAreaElement;
@@ -43,14 +45,22 @@ const NewGuestBook: FC = (): ReactNode => {
     }, 0);
   };
 
+  const handleSubmit = async (event: MouseEvent<HTMLButtonElement>) => {
+    try {
+      const data = await fetch("/api/guestbook/new", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+    } catch (error) {}
+  };
+
   return (
-    <>
+    <Authorization redirectPath="/guestbook/new">
       <Head>
         <title>Portfolio - New Guestbook</title>
       </Head>
       <main className="mx-5 pb-24 lg:mx-16 min-h-screen">
         <Navbar />
-
         <section className="w-full">
           <h1 className="font-semibold text-lg lg:text-2xl uppercase flex justify-center items-center gap-2 tracking-wide text-center">
             <MdArticle className="inline" /> Create new Guestbook
@@ -143,7 +153,7 @@ const NewGuestBook: FC = (): ReactNode => {
                   onChange={(e) => setContent(e.target.value)}
                 ></textarea>
 
-                <button className="btn btn-primary rounded text-lg mt-5" type="submit">
+                <button className="btn btn-primary rounded text-lg mt-5" type="submit" onClick={(event) => handleSubmit(event)}>
                   Submit
                 </button>
               </div>
@@ -152,7 +162,7 @@ const NewGuestBook: FC = (): ReactNode => {
         </section>
       </main>
       <Footer />
-    </>
+    </Authorization>
   );
 };
 

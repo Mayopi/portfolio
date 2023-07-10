@@ -59,8 +59,8 @@ const GuestBook: React.FC = (): React.ReactNode => {
           </h1>
 
           <Link href={"/guestbook/new"}>
-            <button className="btn btn-primary btn-outline text-2xl p-2 aspect-square">
-              <MdArticle />
+            <button className="btn btn-primary btn-outline p-2">
+              <MdArticle className="text-2xl" /> Create Your Own
             </button>
           </Link>
         </header>
