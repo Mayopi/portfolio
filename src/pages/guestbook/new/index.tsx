@@ -56,8 +56,8 @@ const NewGuestBook: FC = (): ReactNode => {
           </h1>
           <form className="w-full mt-10">
             <div className="w-full bg-base-200 min-h-[60px] rounded-t flex justify-between">
-              <div className="h-[60px] flex items-end w-1/2 px-5">
-                <div className="tabs">
+              <div className="h-[60px] flex items-end px-5">
+                <div className="tabs w-full">
                   <a className={`tab tab-bordered ${!preview ? "tab-active" : ""}`} onClick={() => setPreview(false)}>
                     Write
                   </a>
@@ -67,43 +67,50 @@ const NewGuestBook: FC = (): ReactNode => {
                 </div>
               </div>
 
-              <div className="editors w-1/2 flex gap-5 justify-end px-10">
-                <div className="typography flex gap-2 items-center justify-center">
-                  <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Heading" onClick={() => markdownSyntax("# ", "")}>
-                    <BiHeading />
-                  </button>
-                  <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Bold" onClick={() => markdownSyntax("**", "**")}>
-                    <BiBold />
-                  </button>
-                  <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Italic" onClick={() => markdownSyntax("_", "_")}>
-                    <BiItalic />
-                  </button>
-                </div>
+              {preview ? (
+                <></>
+              ) : (
+                <div className="editors w-2/3 flex px-10">
+                  <div className="col w-full lg:w-1/2 flex justify-end items-center">
+                    <div className="typography flex gap-2 items-center justify-center">
+                      <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Heading" onClick={() => markdownSyntax("# ", "")}>
+                        <BiHeading />
+                      </button>
+                      <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Bold" onClick={() => markdownSyntax("**", "**")}>
+                        <BiBold />
+                      </button>
+                      <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Italic" onClick={() => markdownSyntax("_", "_")}>
+                        <BiItalic />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="col w-full lg:w-1/2 flex flex-wrap gap-5 p-3 justify-evenly">
+                    <div className="blocks flex gap-2 items-center justify-center">
+                      <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Quote Block" onClick={() => markdownSyntax("> ", "")}>
+                        <GoQuote />
+                      </button>
+                      <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Code Block" onClick={() => markdownSyntax("`", "`")}>
+                        <BsCode />
+                      </button>
+                      <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Hyperlink" onClick={() => markdownSyntax("[", "](url)")}>
+                        <FiLink />
+                      </button>
+                    </div>
 
-                <div className="blocks flex gap-2 items-center justify-center">
-                  <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Quote Block" onClick={() => markdownSyntax("> ", "")}>
-                    <GoQuote />
-                  </button>
-                  <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Code Block" onClick={() => markdownSyntax("`", "`")}>
-                    <BsCode />
-                  </button>
-                  <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Hyperlink" onClick={() => markdownSyntax("[", "](url)")}>
-                    <FiLink />
-                  </button>
+                    <div className="lists flex gap-2 items-center justify-center">
+                      <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Bullet List" onClick={() => markdownSyntax("- ", "")}>
+                        <MdOutlineFormatListBulleted />
+                      </button>
+                      <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Number List" onClick={() => markdownSyntax("1. ", "")}>
+                        <BsListOl />
+                      </button>
+                      <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Task List" onClick={() => markdownSyntax("- [ ] ", "")}>
+                        <BsListTask />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-
-                <div className="lists flex gap-2 items-center justify-center">
-                  <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Bullet List" onClick={() => markdownSyntax("- ", "")}>
-                    <MdOutlineFormatListBulleted />
-                  </button>
-                  <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Number List" onClick={() => markdownSyntax("1. ", "")}>
-                    <BsListOl />
-                  </button>
-                  <button type="button" className="text-xl hover:text-primary tooltip tooltip-info" data-tip="Task List" onClick={() => markdownSyntax("- [ ] ", "")}>
-                    <BsListTask />
-                  </button>
-                </div>
-              </div>
+              )}
             </div>
             {preview ? (
               <article className="min-w-full prose lg:prose-xl p-5">
