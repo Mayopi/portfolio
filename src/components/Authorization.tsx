@@ -15,7 +15,7 @@ const Authorization: FC<{ redirectPath: string; children: ReactNode }> = ({ redi
     if (wait) {
       const timeout = setTimeout(() => {
         router.replace(redirectPath);
-      }, 5000);
+      }, 3000);
 
       return () => {
         clearTimeout(timeout);
@@ -25,7 +25,7 @@ const Authorization: FC<{ redirectPath: string; children: ReactNode }> = ({ redi
 
   const handleSignInWithGoogle = async () => {
     setWait(true);
-    await signIn("google");
+    await signIn("google", { callbackUrl: "/guestbook/new" });
   };
 
   if (status == "loading" || wait)

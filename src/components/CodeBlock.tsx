@@ -21,7 +21,7 @@ const CodeBlock: FC<{ children: any; className: string }> = ({ children, classNa
           {isCopied ? "Copied!" : <FaCopy />}
         </button>
       </CopyToClipboard>
-      <SyntaxHighlighter language={language} style={oneDark}>
+      <SyntaxHighlighter language={language} style={oneDark} showLineNumbers>
         {children}
       </SyntaxHighlighter>
     </div>

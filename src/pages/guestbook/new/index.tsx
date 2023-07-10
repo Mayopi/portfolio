@@ -9,7 +9,7 @@ import { BsCode, BsListOl, BsListTask } from "react-icons/bs";
 import { FiLink } from "react-icons/fi";
 import Markdown from "markdown-to-jsx";
 import CodeBlock from "@/components/CodeBlock";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Authorization from "@/components/Authorization";
 
 const Heading1: FC<{ children: ReactNode }> = ({ children }): ReactNode => {
@@ -24,7 +24,7 @@ const Heading1: FC<{ children: ReactNode }> = ({ children }): ReactNode => {
 const NewGuestBook: FC = (): ReactNode => {
   const [content, setContent] = useState("");
   const [preview, setPreview] = useState(false);
-  const { data, status } = useSession();
+  const { data } = useSession();
 
   const markdownSyntax = (startTag: string, endTag: string) => {
     const textarea = document.getElementById("guestbook") as HTMLTextAreaElement;
@@ -65,6 +65,16 @@ const NewGuestBook: FC = (): ReactNode => {
           <h1 className="font-semibold text-lg lg:text-2xl uppercase flex justify-center items-center gap-2 tracking-wide text-center">
             <MdArticle className="inline" /> Create new Guestbook
           </h1>
+          <div className="profile flex gap-3 items-center">
+            <div className="avatar">
+              <div className="w-16 rounded-full">
+                <img src={data?.user?.image || ""} alt="" />
+              </div>
+            </div>
+            <button className="btn btn-ghost" onClick={() => signOut({ callbackUrl: "/guestbook/new" })}>
+              Sign Out as {data?.user?.name}
+            </button>
+          </div>
           <form className="w-full mt-10">
             <div className="w-full bg-base-200 min-h-[60px] rounded-t flex justify-between">
               <div className="h-[60px] flex items-end px-5">
