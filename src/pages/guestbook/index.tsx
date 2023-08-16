@@ -11,6 +11,7 @@ import { MdArticle } from "react-icons/md";
 import useSWR from "swr";
 import ReactMarkdown from "markdown-to-jsx";
 import CodeBlock from "@/components/CodeBlock";
+import { Document } from "mongoose";
 
 interface GuestBookUser {
   name: string;
@@ -18,7 +19,7 @@ interface GuestBookUser {
   image: string;
 }
 
-interface GuestBookDocument {
+interface GuestBookDocument extends Document {
   title: string;
   content: string;
   encoding: string;
@@ -30,7 +31,7 @@ interface GuestBookDocument {
   };
 }
 
-const GuestBookItem: React.FC<{ user: string; date: string; title: string; content: string; key: number }> = ({ user, title, content, date, key }): React.ReactNode => {
+const GuestBookItem: React.FC<{ user: string; date: string; _id: string; title: string; content: string; key: number }> = ({ user, title, content, date, _id, key }): React.ReactNode => {
   return (
     <div className="gb-item w-full flex flex-col gap-3" key={key}>
       <header className="header flex gap-2 items-center w-full">
@@ -44,7 +45,7 @@ const GuestBookItem: React.FC<{ user: string; date: string; title: string; conte
         </h3>
       </header>
 
-      <Link href={`/guestbook/${title.split(" ").join("-").toLowerCase()}`} className="cursor-pointer w-full">
+      <Link href={`/guestbook/${_id}`} className="cursor-pointer w-full">
         <div className="body p-3 shadow w-full rounded-lg bg-base-200 mr-5">
           <h1 className="mb-2 font-semibold text-lg text-primary">{title}</h1>
           <article className="min-w-full prose lg:prose-lg">
@@ -112,7 +113,7 @@ const GuestBook: React.FC = (): React.ReactNode => {
 
         <section className="guestbook my-10 lg:mx-56 mx-2 flex flex-wrap gap-6">
           {data.map((guestbook: GuestBookDocument, index: number) => (
-            <GuestBookItem title={guestbook.title} content={Buffer.from(guestbook.content, "base64").toString()} user={guestbook.owner.name} date={guestbook.updatedAt} key={index} />
+            <GuestBookItem title={guestbook.title} content={Buffer.from(guestbook.content, "base64").toString()} user={guestbook.owner.name} date={guestbook.updatedAt} _id={guestbook._id} key={index} />
           ))}
         </section>
       </main>
