@@ -17,7 +17,7 @@ const CodeBlock: FC<{ children: any; className: string }> = ({ children, classNa
   return (
     <div className="code relative">
       <CopyToClipboard text={children}>
-        <button className="absolute top-2 right-2 btn btn-outline btn-primary aspect-square flex items-center justify-center" onClick={() => setIsCopied(true)} disabled={isCopied}>
+        <button className="absolute top-2 right-2 btn btn-sm btn-outline btn-primary flex items-center justify-center" onClick={() => setIsCopied(true)} disabled={isCopied}>
           {isCopied ? "Copied!" : <FaCopy />}
         </button>
       </CopyToClipboard>
