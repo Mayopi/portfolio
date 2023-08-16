@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     await dbConnect();
 
     const guestBooks = await GuestBook.find();
-    return res.status(200).json({ guestBooks });
+    return res.status(200).json({ data: guestBooks });
   } catch (error) {
     return res.status(500).json({ message: error });
   }

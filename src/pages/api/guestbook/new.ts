@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
-import { NextApiRequest, NextApiResponse, NextApiHandler } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
 import GuestBook from "@/models/GuestBook";
 import { decodeBase64, encodeBase64 } from "@/lib/base64";
 
@@ -26,9 +26,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const encodedContent: string = encodeBase64(content);
-    const decodedContent: string = decodeBase64(encodedContent);
 
-    return res.status(200).json({ encode: encodedContent, decode: decodedContent });
+    const data = await GuestBook.create({
+      owner,
+      title,
+      content: encodedContent,
+      encoding: "base64",
+    });
+
+    return res.status(200).json({ data });
   } catch (error) {
     return res.status(500).json({ message: error });
   }

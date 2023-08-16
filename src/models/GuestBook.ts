@@ -9,6 +9,7 @@ interface GuestBookUser {
 interface GuestBookDocument extends Document {
   title: string;
   content: string;
+  encoding: string;
   owner: GuestBookUser;
   upvotes: {
     users: GuestBookUser[];
@@ -20,6 +21,11 @@ const GuestBookSchema = new Schema(
   {
     title: String,
     content: String,
+    encoding: {
+      type: String,
+      default: "base64",
+    },
+
     owner: {
       name: String,
       email: String,

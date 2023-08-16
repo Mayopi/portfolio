@@ -46,12 +46,20 @@ const NewGuestBook: FC = (): ReactNode => {
   };
 
   const handleSubmit = async (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     try {
-      const data = await fetch("/api/guestbook/new", {
+      const response = await fetch("/api/guestbook/new", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content, title: content.split("\n")[0], owner: data?.user }),
       });
-    } catch (error) {}
+
+      const jsonData = await response.json();
+
+      console.log(jsonData);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

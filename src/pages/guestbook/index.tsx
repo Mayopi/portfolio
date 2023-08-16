@@ -8,11 +8,32 @@ import Head from "next/head";
 import { FaBookReader } from "react-icons/fa";
 import { BiUpvote, BiSolidUpvote } from "react-icons/bi";
 import { MdArticle } from "react-icons/md";
+import useSWR from "swr";
+import ReactMarkdown from "markdown-to-jsx";
+import CodeBlock from "@/components/CodeBlock";
 
-const GuestBookItem: React.FC<{ user: string; date: string; title: string; content: string }> = ({ user, title, content, date }): React.ReactNode => {
+interface GuestBookUser {
+  name: string;
+  email: string;
+  image: string;
+}
+
+interface GuestBookDocument {
+  title: string;
+  content: string;
+  encoding: string;
+  updatedAt: string;
+  owner: GuestBookUser;
+  upvotes: {
+    users: GuestBookUser[];
+    count: number;
+  };
+}
+
+const GuestBookItem: React.FC<{ user: string; date: string; title: string; content: string; key: number }> = ({ user, title, content, date, key }): React.ReactNode => {
   return (
-    <div className="gb-item w-full flex flex-col gap-3">
-      <div className="header flex gap-2 items-center w-full">
+    <div className="gb-item w-full flex flex-col gap-3" key={key}>
+      <header className="header flex gap-2 items-center w-full">
         <div className="avatar">
           <div className="w-10 rounded-full">
             <Image src="https://lh3.googleusercontent.com/a/AAcHTtc9j4M-wjVg4UiRg4oz03fJMHvmaDv9daahTPmQ7pXuFnY=s96-c" width={40} height={40} alt="user profile" />
@@ -21,12 +42,24 @@ const GuestBookItem: React.FC<{ user: string; date: string; title: string; conte
         <h3 className="text-lg">
           <span className="font-semibold">{user}</span> <span className="opacity-50 text-base">Posted a Guest Book &#x2022; {date}</span>
         </h3>
-      </div>
+      </header>
 
-      <Link href={`/guestbook/${title.split(" ").join("-").toLowerCase()}`} className="cursor-pointer">
+      <Link href={`/guestbook/${title.split(" ").join("-").toLowerCase()}`} className="cursor-pointer w-full">
         <div className="body p-3 shadow w-full rounded-lg bg-base-200 mr-5">
-          <h1 className="mb-2 font-semibold text-lg">{title}</h1>
-          <p>{content}</p>
+          <h1 className="mb-2 font-semibold text-lg text-primary">{title}</h1>
+          <article className="min-w-full prose lg:prose-lg">
+            <ReactMarkdown
+              options={{
+                overrides: {
+                  code: {
+                    component: CodeBlock,
+                  },
+                },
+              }}
+            >
+              {content}
+            </ReactMarkdown>
+          </article>
 
           <div className="footer mt-3 flex gap-5">
             <Link href={`/guestbook/${user.split(" ").join("-").toLowerCase()}`}>
@@ -42,8 +75,20 @@ const GuestBookItem: React.FC<{ user: string; date: string; title: string; conte
   );
 };
 
+const fetcher = (url: string) => fetch(url).then((r) => r.json());
+
 const GuestBook: React.FC = (): React.ReactNode => {
-  const { data, status } = useSession();
+  const { data: session, status } = useSession();
+
+  const { data: { data } = {}, error: guestbooks_error, isLoading: guestbook_loading } = useSWR(`/api/guestbook`, fetcher);
+
+  if (guestbook_loading) return <div>Loading..</div>;
+  if (guestbooks_error) return <div>error</div>;
+
+  if (data) {
+    console.log(data);
+  }
+
   return (
     <>
       <Head>
@@ -65,21 +110,10 @@ const GuestBook: React.FC = (): React.ReactNode => {
           </Link>
         </header>
 
-        <section className="guestbook my-10 lg:mx-56 mx-10 flex flex-wrap gap-6">
-          <GuestBookItem
-            user="Ocha"
-            date="Last Week"
-            title="Book Title"
-            content="
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur at facere praesentium? Expedita, tempora. Modi vel dolore accusantium magni inventore repellendus temporibus minima placeat necessitatibus, reprehenderit veritatis? Beatae, perspiciatis ipsum."
-          />
-          <GuestBookItem
-            user="Ocha"
-            date="Last Week"
-            title="hello this is test mothafaking title"
-            content="
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur at facere praesentium? Expedita, tempora. Modi vel dolore accusantium magni inventore repellendus temporibus minima placeat necessitatibus, reprehenderit veritatis? Beatae, perspiciatis ipsum."
-          />
+        <section className="guestbook my-10 lg:mx-56 mx-2 flex flex-wrap gap-6">
+          {data.map((guestbook: GuestBookDocument, index: number) => (
+            <GuestBookItem title={guestbook.title} content={Buffer.from(guestbook.content, "base64").toString()} user={guestbook.owner.name} date={guestbook.updatedAt} key={index} />
+          ))}
         </section>
       </main>
       <Footer />
