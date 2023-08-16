@@ -31,17 +31,17 @@ interface GuestBookDocument extends Document {
   };
 }
 
-const GuestBookItem: React.FC<{ user: string; date: string; _id: string; title: string; content: string; key: number }> = ({ user, title, content, date, _id, key }): React.ReactNode => {
+const GuestBookItem: React.FC<{ owner: GuestBookUser; date: string; _id: string; title: string; content: string; key: number }> = ({ owner, title, content, date, _id, key }): React.ReactNode => {
   return (
     <div className="gb-item w-full flex flex-col gap-3" key={key}>
       <header className="header flex gap-2 items-center w-full">
         <div className="avatar">
           <div className="w-10 rounded-full">
-            <Image src="https://lh3.googleusercontent.com/a/AAcHTtc9j4M-wjVg4UiRg4oz03fJMHvmaDv9daahTPmQ7pXuFnY=s96-c" width={40} height={40} alt="user profile" />
+            <Image src={owner.image} width={40} height={40} alt="user profile" />
           </div>
         </div>
         <h3 className="text-lg">
-          <span className="font-semibold">{user}</span> <span className="opacity-50 text-base">Posted a Guest Book &#x2022; {date}</span>
+          <span className="font-semibold">{owner.name}</span> <span className="opacity-50 text-base">Posted a Guest Book &#x2022; {date}</span>
         </h3>
       </header>
 
@@ -63,7 +63,7 @@ const GuestBookItem: React.FC<{ user: string; date: string; _id: string; title: 
           </article>
 
           <div className="footer mt-3 flex gap-5">
-            <Link href={`/guestbook/${user.split(" ").join("-").toLowerCase()}`}>
+            <Link href={`/guestbook/${owner.name.split(" ").join("-").toLowerCase()}`}>
               <p className="hover:link link-info">View Guestbooks</p>
             </Link>
             <button className="text-lg">
@@ -113,7 +113,7 @@ const GuestBook: React.FC = (): React.ReactNode => {
 
         <section className="guestbook my-10 lg:mx-56 mx-2 flex flex-wrap gap-6">
           {data.map((guestbook: GuestBookDocument, index: number) => (
-            <GuestBookItem title={guestbook.title} content={Buffer.from(guestbook.content, "base64").toString()} user={guestbook.owner.name} date={guestbook.updatedAt} _id={guestbook._id} key={index} />
+            <GuestBookItem title={guestbook.title} content={Buffer.from(guestbook.content, "base64").toString()} owner={guestbook.owner} date={guestbook.updatedAt} _id={guestbook._id} key={index} />
           ))}
         </section>
       </main>
