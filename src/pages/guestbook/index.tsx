@@ -48,7 +48,7 @@ const GuestBookItem: React.FC<{ owner: GuestBookUser; date: string; _id: string;
       <Link href={`/guestbook/${_id}`} className="cursor-pointer w-full">
         <div className="body p-3 shadow w-full rounded-lg bg-base-200 mr-5">
           <h1 className="mb-2 font-semibold text-lg text-primary">{title}</h1>
-          <article className="min-w-full prose lg:prose-lg">
+          {/* <article className="min-w-full prose lg:prose-lg">
             <ReactMarkdown
               options={{
                 overrides: {
@@ -60,7 +60,7 @@ const GuestBookItem: React.FC<{ owner: GuestBookUser; date: string; _id: string;
             >
               {content}
             </ReactMarkdown>
-          </article>
+          </article> */}
 
           <div className="footer mt-3 flex gap-5">
             <Link href={`/guestbook/${owner.name.split(" ").join("-").toLowerCase()}`}>
@@ -85,10 +85,6 @@ const GuestBook: React.FC = (): React.ReactNode => {
 
   if (guestbook_loading) return <div>Loading..</div>;
   if (guestbooks_error) return <div>error</div>;
-
-  if (data) {
-    console.log(data);
-  }
 
   return (
     <>
