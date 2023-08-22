@@ -11,6 +11,7 @@ import Markdown from "markdown-to-jsx";
 import CodeBlock from "@/components/CodeBlock";
 import { useSession, signOut } from "next-auth/react";
 import Authorization from "@/components/Authorization";
+import { useRouter } from "next/router";
 
 const Heading1: FC<{ children: ReactNode }> = ({ children }): ReactNode => {
   return (
@@ -25,6 +26,8 @@ const NewGuestBook: FC = (): ReactNode => {
   const [content, setContent] = useState("");
   const [preview, setPreview] = useState(false);
   const { data } = useSession();
+
+  const router = useRouter();
 
   const markdownSyntax = (startTag: string, endTag: string) => {
     const textarea = document.getElementById("guestbook") as HTMLTextAreaElement;
@@ -53,6 +56,8 @@ const NewGuestBook: FC = (): ReactNode => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content, title: content.split("\n")[0], owner: data?.user }),
       });
+
+      if (response.ok) return router.replace("/guestbook");
 
       const jsonData = await response.json();
 
