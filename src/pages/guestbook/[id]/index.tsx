@@ -6,6 +6,7 @@ import useSWR from "swr";
 import Image from "next/image";
 import ReactMarkdown from "markdown-to-jsx";
 import CodeBlock from "@/components/CodeBlock";
+import Loading from "@/components/Loading";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
@@ -16,7 +17,7 @@ const GuestBookId: React.FC = () => {
   const { data, error, isLoading } = useSWR(id ? `/api/guestbook/${id}` : null, fetcher);
   const guestbook = data?.data;
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading />;
   if (error) return <p>{error}</p>;
 
   console.log(guestbook);
