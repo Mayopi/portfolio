@@ -9,9 +9,8 @@ import { FaBookReader } from "react-icons/fa";
 import { BiUpvote, BiSolidUpvote } from "react-icons/bi";
 import { MdArticle } from "react-icons/md";
 import useSWR from "swr";
-import ReactMarkdown from "markdown-to-jsx";
-import CodeBlock from "@/components/CodeBlock";
 import { Document } from "mongoose";
+import Loading from "@/components/Loading";
 
 interface GuestBookUser {
   name: string;
@@ -83,7 +82,7 @@ const GuestBook: React.FC = (): React.ReactNode => {
 
   const { data: { data } = {}, error: guestbooks_error, isLoading: guestbook_loading } = useSWR(`/api/guestbook`, fetcher);
 
-  if (guestbook_loading) return <div>Loading..</div>;
+  if (guestbook_loading) return <Loading />;
   if (guestbooks_error) return <div>error</div>;
 
   return (

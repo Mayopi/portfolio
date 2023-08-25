@@ -13,7 +13,7 @@ import Projects from "@/components/Projects";
 import Internships from "@/components/Internships";
 import Footer from "@/components/Footer";
 import useSWR from "swr";
-import { signIn } from "next-auth/react";
+import Loading from "@/components/Loading";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -26,7 +26,7 @@ const Home: FC = (): ReactNode => {
   return (
     <>
       {isLoading || repos_loading ? (
-        <div className="loading loading-spinner loading-lg"></div>
+        <Loading />
       ) : error || repos_error ? (
         <div>Something bad happened {":("}</div>
       ) : (
