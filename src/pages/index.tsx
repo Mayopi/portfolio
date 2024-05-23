@@ -51,9 +51,9 @@ const Home: FC = (): ReactNode => {
                   deep curiosity and eagerness to learn, I thrive on embracing new challenges and leveraging cutting-edge tools to create impactful and meaningful experiences.
                 </p>
                 <div className="mt-2 flex gap-3  items-center">
-                  <button className="btn btn-primary">
+                  {/* <button className="btn btn-primary">
                     Send Message <FaPaperPlane className="inline" />
-                  </button>
+                  </button> */}
                   {/* <Link href={"/pdf/Mayopi-Resume.pdf"} download={"Mayopi-Resume.pdf"} target="__blank">
                     <button className="btn btn-outline btn-primary">
                       Download CV <FaFilePdf className="inline" />
