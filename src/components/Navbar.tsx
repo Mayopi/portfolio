@@ -6,9 +6,12 @@ type Props = {};
 
 const Navbar: React.FC = (): React.ReactNode => {
   return (
-    <div className="navbar">
+    <div className="bg-inherit">
       <div className="flex-1 text-primary">
-        <Link href={"/"} className="btn btn-ghost normal-case text-xl tracking-wider">
+        <Link
+          href={"/"}
+          className="btn btn-ghost normal-case text-xl tracking-wider"
+        >
           Mayopi
         </Link>
       </div>
