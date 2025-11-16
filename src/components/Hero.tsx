@@ -46,7 +46,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 mt-10">
       {/* Semi-transparent overlay for better text readability */}
-      <div className="absolute inset-0  from-black/40 via-black/20 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none" />
 
       {/* Hero Content */}
       <div className="relative z-10 max-w-5xl w-full mx-auto text-center">
@@ -57,7 +57,7 @@ export default function Hero() {
           }`}
         >
           {/* Greeting */}
-          <p className="text-primary text-lg sm:text-xl md:text-2xl font-medium mb-4 tracking-wide drop-shadow-[0_2px_8px_rgba(0,255,255,0.3)]">
+          <p className="text-primary text-lg sm:text-xl md:text-2xl font-medium mb-4 tracking-wide">
             Hi there!
           </p>
 
@@ -90,7 +90,7 @@ export default function Hero() {
             isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 text-primary drop-shadow-[0_2px_10px_rgba(0,255,255,0.4)]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 text-primary">
             Front End Developer
           </h2>
         </div>
@@ -101,7 +101,7 @@ export default function Hero() {
             isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
         >
-          <p className="text-base max-w-3xl mx-auto mb-10 leading-relaxed drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
+          <p className="text-base max-w-3xl mx-auto mb-10 leading-relaxed">
             Im Eri! passionate Tech Enthusiast, constantly exploring the
             ever-evolving world of technology and seeking innovative solutions.
             With a deep curiosity and eagerness to learn. I thrive on embracing
@@ -113,7 +113,7 @@ export default function Hero() {
         {/* Experience */}
         <div className="grid lg:grid-cols-2 gap-8 max-w-2xl mx-auto mb-12 text-center">
           <div className="grid lg:grid-cols-4 lg:gap-4 items-center justify-center">
-            <p className="lg:text-4xl">{new Date().getFullYear() - 2023}</p>
+            <p className="lg:text-xl">{new Date().getFullYear() - 2023}</p>
             <div className="uppercase lg:max-w-1 text-sm lg:col-span-3">
               <p>Years Experience</p>
             </div>

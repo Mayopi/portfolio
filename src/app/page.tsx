@@ -2,6 +2,7 @@
 import Hero from "@/components/Hero";
 import Hobbies from "@/components/Hobbies";
 import LightRays from "@/components/LightRays";
+import Location from "@/components/Location";
 import Navbar from "@/components/Navbar";
 import { useTheme } from "next-themes";
 
@@ -32,6 +33,7 @@ export default function Home() {
         <Hero />
 
         <Hobbies />
+        <Location />
       </main>
     </>
   );
