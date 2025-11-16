@@ -1,17 +1,21 @@
 "use client";
 import Hero from "@/components/Hero";
+import Hobbies from "@/components/Hobbies";
 import LightRays from "@/components/LightRays";
 import Navbar from "@/components/Navbar";
+import { useTheme } from "next-themes";
 
 export default function Home() {
+  const { theme } = useTheme();
   return (
     <>
       <Navbar />
-      <div className="relative w-full">
-        {/* Background Light Rays */}
+
+      {/* Fixed Background Light Rays - extends across entire viewport */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <LightRays
           raysOrigin="top-center"
-          raysColor="#00ffff"
+          raysColor={theme === "dark" ? "#00ffff" : "#2374CF"}
           raysSpeed={1.2}
           lightSpread={0.8}
           rayLength={1.3}
@@ -19,14 +23,16 @@ export default function Home() {
           mouseInfluence={0.1}
           noiseAmount={0.1}
           distortion={0.05}
-          className="absolute inset-0 z-0 pointer-events-none"
+          className="w-full h-full"
         />
-
-        {/* Foreground Content */}
-        <div className="relative z-10">
-          <Hero />
-        </div>
       </div>
+
+      {/* Main Content - positioned above background */}
+      <main>
+        <Hero />
+
+        <Hobbies />
+      </main>
     </>
   );
 }
