@@ -4,13 +4,12 @@ Welcome to the portfolio project documentation.
 
 ---
 
-## Quick Links
-
-- [Tech Stack](TECH_STACK.md) - Dependencies and tools
+## Quick Links- [Tech Stack](TECH_STACK.md) - Dependencies and tools
 - [Component Usage](COMPONENT_USAGE.md) - How to use components
 - [Best Practices](BEST_PRACTICES.md) - Coding conventions
 - [Codebase Overview](CODEBASE_OVERVIEW.md) - Project structure
-- [Anime.js Plan](ANIMEJS_PLAN.md) - Animation implementation
+- [Theming](THEMING.md) - Nautical theme system, CSS variables, oklch colors
+- [ModelViewer Guide](MODELVIEWER_GUIDE.md) - 3D viewer props, controls, and rendering
 
 ---
 
@@ -40,22 +39,38 @@ pnpm lint
 
 ## Current Features
 
-1. **Hero Section** - GitHub profile integration
-2. **3D Guitar Display** - Interactive ModelViewer
-3. **Theme Support** - Dark/light mode
-4. **Light Rays Background** - Dynamic background effect
-5. **Location Globe** - Interactive globe component
+1. **Hero Section** — GitHub profile integration
+2. **3D Guitar Display** — Interactive ModelViewer with mouse controls
+3. **Modern Scroll Parallax** — Multi-speed scroll-synced animations via animejs `onScroll()`
+4. **Theme Support** — Nautical-inspired dark/light mode with oklch colors
+5. **Light Rays Background** — Dynamic background effect
+6. **Location Globe** — Interactive globe component
 
 ---
 
-## Adding Anime.js
+## Animation System
 
-See [Anime.js Plan](ANIMEJS_PLAN.md) for implementation details.
+The project uses **animejs v4** for all animations. Two animation approaches coexist:
 
-1. Install: `pnpm add animejs`
-2. Create animation utilities
-3. Add scroll-triggered animations
-4. Integrate with guitar model
+### Scroll-Synced (Recommended for new work)
+Uses `onScroll()` with `sync` to tie animation progress to scroll position. Creates multi-speed parallax by applying different `translate` ranges to different element groups.
+
+```tsx
+import { animate } from 'animejs/animation';
+import { onScroll } from 'animejs/events';
+
+const anim = animate('.target', {
+  translateY: [100, -100],
+  ease: 'linear',
+  duration: 2000,
+  autoplay: false,
+});
+
+onScroll({ target: '.target', sync: 0.15 }).link(anim);
+```
+
+### Scroll-Triggered (Legacy)
+Uses IntersectionObserver via `useScrollAnimation` hook to detect when elements enter the viewport, then plays an animejs animation.
 
 ---
 

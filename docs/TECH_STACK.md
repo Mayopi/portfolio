@@ -30,9 +30,9 @@
 - **next-themes** ^0.4.6 - Theme management
 - **sonner** ^2.0.7 - Toast notifications
 
-## Animation (Planned)
+## Animation
 
-- **animejs** ^4.x - JavaScript animation library
+- **animejs** ^4.5.0 - JavaScript animation engine (scroll-driven parallax, timeline, easing)
 
 ---
 

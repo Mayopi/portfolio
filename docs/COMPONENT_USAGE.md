@@ -19,18 +19,34 @@ import Hero from "@/components/Hero";
 ```
 
 ### Hobbies
-Contains 3D guitar model
+Portfolio section with 3D guitar model and modern scroll-synced parallax effects
+- Uses animejs `onScroll()` for multi-speed parallax: header (slow), text (medium), model (fast)
+- Wraps the 3D model in `GuitarParallax` for additional mouse-driven + scroll parallax
 - Dynamic import for ModelViewer (client-side only)
-- Mobile-responsive (hides 3D on mobile)
+- Mobile-responsive (hides 3D on mobile, disables scroll animations)
 
 ```tsx
 import Hobbies from "@/components/Hobbies";
+```
+
+### GuitarParallax
+Wrapper component that applies mouse-driven and scroll-driven parallax to children
+- **`speed`** (default `0.05`) — mouse parallax sensitivity
+- **`scrollSpeed`** (default `0.2`) — scroll parallax intensity (Y-axis movement during scroll)
+
+```tsx
+import GuitarParallax from "@/components/guitar/GuitarParallax";
+
+<GuitarParallax speed={0.06} scrollSpeed={0.25}>
+  <div className="guitar-model-wrapper">...</div>
+</GuitarParallax>
 ```
 
 ### ModelViewer
 3D model renderer using React Three Fiber
 - Supports GLB, GLTF, FBX, OBJ formats
 - Interactive controls (orbit, zoom, hover)
+- Built-in mouse parallax, hover rotation, manual rotation
 
 ```tsx
 import dynamic from "next/dynamic";
@@ -93,6 +109,33 @@ Detect mobile viewport
 const isMobile = useIsMobile();
 ```
 
+### useScrollAnimation
+Scroll-triggered entrance animations using IntersectionObserver + animejs (legacy — new sections should prefer `onScroll()` directly)
+
+```tsx
+const { hasAnimated } = useScrollAnimation('.selector', {
+  translateY: [50, 0],
+  opacity: [0, 1],
+  duration: 1000,
+});
+```
+
+---
+
+## Animation Utilities (src/lib/animation.ts)
+
+Reusable animejs animation builders:
+
+| Function | Purpose |
+|----------|---------|
+| `createScrollReveal()` | Configurable scroll-triggered reveal |
+| `createStaggerAnimation()` | Staggered entrance for multiple elements |
+| `createParallaxAnimation()` | Mouse-driven parallax on an element |
+| `createEntranceAnimation()` | Simple fade-in + slide-up entrance |
+| `createTimelineAnimation()` | Animejs timeline builder |
+| `animateOnScroll()` | IntersectionObserver-based scroll trigger |
+| `animate`, `set`, `createTimeline`, `stagger` | Re-exports from animejs |
+
 ---
 
 ## Page Structure
@@ -100,10 +143,10 @@ const isMobile = useIsMobile();
 ```tsx
 // app/page.tsx
 <Navbar />
-<LightRays />  {/* Background */}
+<LightRays />  {/* Fixed background */}
 <main>
-  <Hero />
-  <Hobbies />
-  <Location />
+  <Hero />           {/* Landing, GitHub profile */}
+  <Hobbies />        {/* Guitar 3D model + scroll parallax */}
+  <Location />       {/* Interactive globe */}
 </main>
 ```

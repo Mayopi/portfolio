@@ -106,27 +106,67 @@ className={cn(
 
 ---
 
-## Animation (Anime.js)
+## Animation (Anime.js v4)
 
 ### Setup
-- Import only needed modules
-- Use `autoplay: false` for controlled animations
-
-### Scroll Animations
-- Use Intersection Observer for triggers
-- Clean up animations on unmount
+- Import only needed modules (tree-shakeable ESM)
+- Use `autoplay: false` for externally controlled animations
 
 ```tsx
-useEffect(() => {
-  const animation = anime({...});
-  return () => animation.seek(0); // Reset on unmount
-}, []);
+import { animate } from 'animejs/animation';
+import { onScroll } from 'animejs/events';
+import { set } from 'animejs/utils';
 ```
 
+### Scroll-Synced Animations (Modern Parallax)
+Use `onScroll()` with `sync` for scroll-driven animations. This maps animation progress directly to scroll position — creates the modern parallax effect seen on animejs.com.
+
+```tsx
+import { animate } from 'animejs/animation';
+import { onScroll } from 'animejs/events';
+
+// Create an animation with autoplay disabled
+const anim = animate('.element', {
+  translateY: [100, -100],  // moves 200px total through scroll range
+  scale: [0.9, 1],
+  easing: 'linear',         // linear for scroll sync
+  duration: 2000,
+  autoplay: false,
+});
+
+// Link it to scroll — sync interpolates progress smoothly
+const observer = onScroll({
+  target: '.element',
+  sync: 0.15,  // 0–1 smooth factor, or `true` for direct sync
+}).link(anim);
+
+// Cleanup
+return () => {
+  observer.revert();
+  anim.pause();
+};
+```
+
+### Multi-Speed Parallax (Depth Effect)
+Give different element groups different `translate` ranges to create the illusion of depth:
+
+| Layer | translateY | Description |
+|-------|-----------|-------------|
+| Background | `[60, -60]` | Slow movement — far away |
+| Mid-ground | `[80, -80]` | Medium movement |
+| Foreground | `[100, -100]` | Fast movement — close up |
+
+### Key Parameters for `onScroll()`
+- **`sync`** — `true` for exact 1:1 sync, a number (0–1) for smooth interpolation, or a string like `'play pause'`
+- **`target`** — Element to observe for scroll thresholds
+- **`enter` / `leave`** — Scroll boundary thresholds (default: `'end start'` / `'start end'`)
+- **`.link(animation)`** — Attaches an animation to the scroll observer
+
 ### Performance
-- Use `will-change` for animated properties
-- Avoid animating layout properties
-- Use transforms and opacity
+- Use CSS transforms (`translateX`, `translateY`, `scale`) and `opacity` only
+- Avoid animating layout properties (`width`, `height`, `margin`, `top`, `left`)
+- `onScroll()` with `sync` performs efficient requestAnimationFrame-based updates
+- Clean up observers and animations on unmount
 
 ---
 

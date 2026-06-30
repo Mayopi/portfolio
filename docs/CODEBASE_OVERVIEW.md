@@ -6,33 +6,37 @@
 portfolio/
 ├── public/
 │   ├── 3D/
-│   │   └── guitar.glb          # 3D guitar model
+│   │   └── guitar.glb            # 3D guitar model
 │   └── images/
 │       └── brush-background-blue.png
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx          # Root layout
-│   │   ├── page.tsx            # Home page
-│   │   └── globals.css         # Global styles
+│   │   ├── layout.tsx            # Root layout
+│   │   ├── page.tsx              # Home page
+│   │   └── globals.css           # Global styles
 │   ├── components/
 │   │   ├── ui/
-│   │   │   ├── button.tsx      # Button component
-│   │   │   └── sonner.tsx     # Toast component
-│   │   ├── Hero.tsx           # Landing section
-│   │   ├── Hobbies.tsx        # Guitar section
-│   │   ├── Location.tsx       # Globe section
-│   │   ├── LightRays.tsx      # Background effect
-│   │   ├── ModelViewer.tsx    # 3D viewer
-│   │   └── Navbar.tsx         # Navigation
+│   │   │   ├── button.tsx        # Button component
+│   │   │   └── sonner.tsx        # Toast component
+│   │   ├── guitar/
+│   │   │   └── GuitarParallax.tsx # Mouse + scroll parallax wrapper
+│   │   ├── Hero.tsx              # Landing section
+│   │   ├── Hobbies.tsx           # Guitar section with scroll parallax
+│   │   ├── Location.tsx          # Globe section
+│   │   ├── LightRays.tsx         # Background effect
+│   │   ├── ModelViewer.tsx       # 3D model viewer (R3F)
+│   │   └── Navbar.tsx            # Navigation
 │   ├── hooks/
-│   │   ├── use-github-profile.ts
-│   │   └── use-mobile.tsx
+│   │   ├── use-github-profile.ts  # GitHub API data fetching
+│   │   ├── use-mobile.tsx         # Responsive viewport detection
+│   │   └── useScrollAnimation.ts  # Scroll-triggered animejs animations
 │   ├── lib/
-│   │   ├── cache.ts
-│   │   └── utils.ts
+│   │   ├── animation.ts           # Animejs animation utilities
+│   │   ├── cache.ts               # Data caching
+│   │   └── utils.ts               # Shared utilities
 │   └── types/
-│       └── github.ts
-├── docs/                       # Documentation
+│       └── github.ts              # GitHub API types
+├── docs/                          # Project documentation
 ├── package.json
 ├── tsconfig.json
 ├── next.config.ts
@@ -61,12 +65,14 @@ portfolio/
 ```
 page.tsx
   ├── Navbar (static)
-  ├── LightRays (theme-aware)
+  ├── LightRays (fixed background, theme-aware)
   └── main content
         ├── Hero
         │     └── useGithubProfile → GitHub API
         ├── Hobbies
-        │     └── ModelViewer → guitar.glb
+        │     ├── animejs onScroll() — header / text / model parallax
+        │     ├── GuitarParallax — mouse + scroll wrapper
+        │     └── ModelViewer → guitar.glb (R3F)
         └── Location
               └── react-globe.gl
 ```
@@ -81,6 +87,8 @@ page.tsx
 | GitHub data | SWR | useGithubProfile |
 | Mobile detection | useState | use-mobile.tsx |
 | Model loaded | useState | Hobbies.tsx |
+| Scroll anims | animejs onScroll() | Hobbies.tsx + GuitarParallax.tsx |
+| Animation utils | animejs animate/set | lib/animation.ts |
 
 ---
 
