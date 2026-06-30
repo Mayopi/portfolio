@@ -1,0 +1,105 @@
+# Codebase Overview
+
+## Project Structure
+
+```
+portfolio/
+├── public/
+│   ├── 3D/
+│   │   └── guitar.glb          # 3D guitar model
+│   └── images/
+│       └── brush-background-blue.png
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx          # Root layout
+│   │   ├── page.tsx            # Home page
+│   │   └── globals.css         # Global styles
+│   ├── components/
+│   │   ├── ui/
+│   │   │   ├── button.tsx      # Button component
+│   │   │   └── sonner.tsx     # Toast component
+│   │   ├── Hero.tsx           # Landing section
+│   │   ├── Hobbies.tsx        # Guitar section
+│   │   ├── Location.tsx       # Globe section
+│   │   ├── LightRays.tsx      # Background effect
+│   │   ├── ModelViewer.tsx    # 3D viewer
+│   │   └── Navbar.tsx         # Navigation
+│   ├── hooks/
+│   │   ├── use-github-profile.ts
+│   │   └── use-mobile.tsx
+│   ├── lib/
+│   │   ├── cache.ts
+│   │   └── utils.ts
+│   └── types/
+│       └── github.ts
+├── docs/                       # Documentation
+├── package.json
+├── tsconfig.json
+├── next.config.ts
+└── tailwind.config.ts
+```
+
+---
+
+## Key Files
+
+### Entry Points
+- `src/app/layout.tsx` - Root layout, theme provider
+- `src/app/page.tsx` - Main home page
+
+### Configuration
+- `package.json` - Dependencies
+- `tsconfig.json` - TypeScript config
+- `next.config.ts` - Next.js config
+- `tailwind.config.ts` - Tailwind config
+- `eslint.config.mjs` - ESLint config
+
+---
+
+## Data Flow
+
+```
+page.tsx
+  ├── Navbar (static)
+  ├── LightRays (theme-aware)
+  └── main content
+        ├── Hero
+        │     └── useGithubProfile → GitHub API
+        ├── Hobbies
+        │     └── ModelViewer → guitar.glb
+        └── Location
+              └── react-globe.gl
+```
+
+---
+
+## State Management
+
+| State | Method | Location |
+|-------|--------|----------|
+| Theme | next-themes | layout.tsx |
+| GitHub data | SWR | useGithubProfile |
+| Mobile detection | useState | use-mobile.tsx |
+| Model loaded | useState | Hobbies.tsx |
+
+---
+
+## Dependencies Graph
+
+```
+next (core)
+├── react + react-dom
+├── three / @react-three/fiber
+├── tailwindcss
+├── swr
+└── lucide-react
+```
+
+---
+
+## Conventions
+
+- `"use client"` for interactive components
+- Dynamic imports for 3D/canvas
+- Path aliases: `@/` → `src/`
+- Component props in dedicated interfaces
