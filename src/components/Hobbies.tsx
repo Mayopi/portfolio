@@ -1,6 +1,8 @@
 "use client";
 
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import GuitarParallax from "@/components/guitar/GuitarParallax";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
@@ -25,7 +27,33 @@ export default function Hobbies() {
   const [isVisible, setIsVisible] = useState(false);
   const [, setModelLoaded] = useState(false);
   const isMobile = useIsMobile();
-  // Trigger animation on mount
+
+  useScrollAnimation('.hobbies-header', {
+    translateY: [60, 0],
+    opacity: [0, 1],
+    scale: [0.9, 1],
+    duration: 1200,
+    easing: 'easeOutExpo',
+  });
+
+  useScrollAnimation('.hobbies-text', {
+    translateY: [40, 0],
+    opacity: [0, 1],
+    duration: 1000,
+    delay: 200,
+    easing: 'easeOutQuad',
+    stagger: 150,
+  });
+
+  useScrollAnimation('.guitar-model-wrapper', {
+    translateX: [100, 0],
+    opacity: [0, 1],
+    scale: [0.8, 1],
+    duration: 1500,
+    easing: 'easeOutExpo',
+    delay: 300,
+  });
+
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
@@ -43,7 +71,7 @@ export default function Hobbies() {
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         {/* Section Header */}
         <div
-          className={`text-center mb-16 transition-all duration-1000 ease-out transform ${
+          className={`hobbies-header text-center mb-16 transition-all duration-1000 ease-out transform ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
         >
@@ -60,20 +88,20 @@ export default function Hobbies() {
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Left Side - Text Content */}
           <div className="space-y-6 text-center lg:text-left">
-            <div>
+            <div className="hobbies-text">
               <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-[0_2px_8px_rgba(0,255,255,0.3)]">
                 Playing Guitar
               </h3>
               <div className="h-1 w-24 bg-linear-to-r from-primary to-blue-500 mx-auto lg:mx-0 rounded-full mb-6"></div>
             </div>
 
-            <p className="leading-relaxed">
+            <p className="hobbies-text leading-relaxed">
               I started learning guitar from mid 2025 as a way to unwind after
               long hours of coding. It&apos;s been an incredible journey of
               self-expression and creativity, allowing me to relief stress and
               sometimes making it worse somehow.
             </p>
-            <p className="leading-relaxed">
+            <p className="hobbies-text leading-relaxed">
               master a skill. Playing guitar has become more than just a hobby;
               it&apos;s a way for me to connect with others and share my
               passion.
@@ -83,22 +111,24 @@ export default function Hobbies() {
           {/* Right Side - 3D Model */}
 
           {!isMobile && (
-            <div className="w-full h-[400px] sm:h-[500px] md:h-[600px]">
-              <ModelViewer
-                url="/3D/guitar.glb"
-                width="100%"
-                height="100%"
-                showScreenshotButton={false}
-                enableMouseParallax={true}
-                enableManualRotation={true}
-                enableHoverRotation={true}
-                enableManualZoom={true}
-                defaultRotationX={-20}
-                defaultRotationY={30}
-                environmentPreset="sunset"
-                onModelLoaded={() => setModelLoaded(true)}
-              />
-            </div>
+            <GuitarParallax speed={0.06}>
+              <div className="guitar-model-wrapper w-full h-[400px] sm:h-[500px] md:h-[600px]">
+                <ModelViewer
+                  url="/3D/guitar.glb"
+                  width="100%"
+                  height="100%"
+                  showScreenshotButton={false}
+                  enableMouseParallax={true}
+                  enableManualRotation={true}
+                  enableHoverRotation={true}
+                  enableManualZoom={true}
+                  defaultRotationX={-20}
+                  defaultRotationY={30}
+                  environmentPreset="sunset"
+                  onModelLoaded={() => setModelLoaded(true)}
+                />
+              </div>
+            </GuitarParallax>
           )}
         </div>
       </div>
