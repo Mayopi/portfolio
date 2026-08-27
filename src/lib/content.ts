@@ -1,6 +1,7 @@
 export const navItems = [
   { label: 'about', href: '#about' },
   { label: 'work', href: '#work' },
+  { label: 'github', href: '#github' },
   { label: 'stack', href: '#stack' },
   { label: 'contact', href: '#contact' }
 ];
@@ -17,10 +18,10 @@ export const projects = [
   {
     number: '02',
     title: 'guitar.lab',
-    description: 'An interactive 3D experiment for learning, rotating, and making space for music.',
-    tags: ['webgl', 'three.js', 'creative'],
-    status: 'experiment',
-    href: '/3D/guitar.glb'
+    description: 'A rotating ASCII instrument for learning, unwinding, and making space for music.',
+    tags: ['ascii', 'svelte', 'creative'],
+    status: 'rotating',
+    href: '#guitar'
   },
   {
     number: '03',
@@ -41,4 +42,4 @@ export const stack = [
   { name: 'Figma / UI systems', level: 'crafting' }
 ];
 
-export const commands = ['help', 'about', 'work', 'stack', 'contact', 'clear'];
+export const commands = ['help', 'about', 'work', 'github', 'stack', 'contact', 'clear'];

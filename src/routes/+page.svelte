@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import AsciiGuitar from '$lib/AsciiGuitar.svelte';
   import CommandPrompt from '$lib/CommandPrompt.svelte';
+  import GitHubHeatmap from '$lib/GitHubHeatmap.svelte';
   import { projects, stack } from '$lib/content';
   import ProjectCard from '$lib/ProjectCard.svelte';
   import TerminalHeader from '$lib/TerminalHeader.svelte';
@@ -38,7 +40,7 @@
   <main>
     <section class="hero" aria-labelledby="hero-title">
       <div class="boot-log" aria-label="Portfolio boot log">
-        <div><span class="prompt-symbol">$</span> ./eri --init --today</div>
+        <div><span class="prompt-symbol">$</span> ./eri --init --today<span class="terminal-cursor" aria-hidden="true"></span></div>
         <div><span class="ok">[ok]</span> identity module loaded</div>
         <div><span class="ok">[ok]</span> frontend systems online</div>
         <div><span class="ok">[ok]</span> curiosity engine running</div>
@@ -75,7 +77,7 @@
       </div>
     </section>
 
-    <section class="section section-grid" id="about" aria-labelledby="about-title">
+    <section class="section section-grid theme-copilot" id="about" aria-labelledby="about-title">
       <div class="section-label"><span>01</span><span>./about</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol">$</span><h2 id="about-title">cat about.txt</h2></div>
@@ -86,16 +88,25 @@
       </div>
     </section>
 
-    <section class="section" id="work" aria-labelledby="work-title">
+    <section class="section theme-security" id="work" aria-labelledby="work-title">
       <div class="section-label"><span>02</span><span>./work</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol">$</span><h2 id="work-title">ls -la ./selected-work</h2></div>
+        <div class="guitar-feature"><AsciiGuitar /><div class="guitar-copy"><span class="feature-label">// hobby process</span><p class="large-copy">When screen time gets loud, I pick up a guitar. This one now lives in the terminal.</p><p class="muted">No canvas. No heavy asset. Just text frames, a timer, and a little rhythm.</p></div></div>
         <div class="project-grid">{#each projects as project}<ProjectCard {project} />{/each}</div>
       </div>
     </section>
 
+    <section class="section github-section" id="github" aria-labelledby="github-title">
+      <div class="section-label"><span>03</span><span>./github</span></div>
+      <div class="section-body">
+        <div class="section-heading"><span class="prompt-symbol">$</span><h2 id="github-title">gh activity --last-year</h2></div>
+        <GitHubHeatmap username="mayopi" />
+      </div>
+    </section>
+
     <section class="section section-grid" id="stack" aria-labelledby="stack-title">
-      <div class="section-label"><span>03</span><span>./stack</span></div>
+      <div class="section-label"><span>04</span><span>./stack</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol">$</span><h2 id="stack-title">cat stack.json</h2></div>
         <div class="stack-table" role="list">{#each stack as item, index}<div class="stack-row" role="listitem"><span class="stack-index">0{index + 1}</span><strong>{item.name}</strong><span class="stack-level">{item.level}</span></div>{/each}</div>
@@ -103,7 +114,7 @@
     </section>
 
     <section class="section contact-section" id="contact" aria-labelledby="contact-title">
-      <div class="section-label"><span>04</span><span>./contact</span></div>
+      <div class="section-label"><span>05</span><span>./contact</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol">$</span><h2 id="contact-title">open connection</h2></div>
         <div class="contact-content"><div><p class="large-copy">Have a problem worth solving?</p><p class="muted">Open a connection through GitHub. I usually reply within a day.</p></div><a class="email-link" href="https://github.com/mayopi" target="_blank" rel="noreferrer">github.com/mayopi <span>↗</span></a></div>
