@@ -1,6 +1,7 @@
 export const navItems = [
   { label: 'about', href: '#about' },
   { label: 'work', href: '#work' },
+  { label: 'flow', href: '#flow' },
   { label: 'github', href: '#github' },
   { label: 'stack', href: '#stack' },
   { label: 'contact', href: '#contact' }
@@ -42,4 +43,4 @@ export const stack = [
   { name: 'Figma / UI systems', level: 'crafting' }
 ];
 
-export const commands = ['help', 'about', 'work', 'github', 'stack', 'contact', 'clear'];
+export const commands = ['help', 'about', 'work', 'flow', 'github', 'stack', 'contact', 'clear'];

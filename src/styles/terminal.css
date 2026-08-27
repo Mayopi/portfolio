@@ -1,0 +1,16 @@
+.scroll-reveal .reveal-piece { opacity: 0; transform: translateY(18px); }
+.scroll-reveal.is-visible .reveal-piece { animation: terminal-build .58s cubic-bezier(.2,.8,.2,1) var(--reveal-delay) forwards; }
+@keyframes terminal-build { 0% { opacity: 0; transform: translateY(18px); clip-path: inset(0 100% 0 0); } 55% { opacity: 1; } 100% { opacity: 1; transform: translateY(0); clip-path: inset(0 0 0 0); } }
+.command-console { max-width: 780px; margin: 20px auto 95px; padding: 16px; border: 1px solid var(--green-5); background: rgba(10,36,27,.34); }
+.console-output { min-height: 30px; margin-bottom: 14px; color: var(--gray-4); font-size: 11px; }
+.command-console form { display: flex; gap: 12px; align-items: center; }
+.prompt-label { color: var(--green-2); font-size: 12px; white-space: nowrap; }
+.command-console input { width: 100%; color: var(--gray-1); background: transparent; border: 0; outline: 0; font-size: 12px; }
+.command-console input::placeholder { color: var(--gray-4); }
+footer { display: flex; justify-content: space-between; gap: 20px; padding: 22px 0; border-top: 1px solid var(--line); color: var(--gray-4); font-size: 10px; }
+kbd { padding: 2px 5px; border: 1px solid var(--line); color: var(--gray-2); }
+.terminal-cursor, .section-heading h2::after { display: inline-block; width: .68ch; height: 1em; margin-left: .5ch; background: currentColor; vertical-align: -.12em; content: ''; animation: terminal-blink 1s steps(1, end) infinite; }
+.section-heading h2::after { color: var(--green-2); }
+.theme-copilot .section-heading h2::after { color: var(--copilot-1); }
+.theme-security .section-heading h2::after { color: var(--security-1); }
+@keyframes terminal-blink { 0%, 46% { opacity: 1; } 47%, 100% { opacity: 0; } }

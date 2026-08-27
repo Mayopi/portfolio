@@ -1,0 +1,8 @@
+:root { font-family: 'JetBrains Mono', monospace; color: #f2f5f3; background: #000; font-synthesis: none; text-rendering: optimizeLegibility; --black: #000; --black-soft: #0a0a0a; --gray-1: #f2f5f3; --gray-2: #e4ebe6; --gray-3: #b6bfb8; --gray-4: #909692; --gray-5: #232925; --green-1: #bfffd1; --green-2: #8cf2a6; --green-4: #0fbf3e; --green-5: #08872b; --green-6: #0a241b; --copilot-1: #c898fd; --copilot-3: #8534f3; --copilot-5: #26115f; --security-1: #9eecff; --security-2: #3094ff; --security-3: #1a61fe; --security-6: #001c4d; --line: rgba(182, 191, 184, .2); }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background: var(--black); }
+body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .18; background-image: linear-gradient(rgba(140,242,166,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(140,242,166,.06) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(to bottom, black, transparent 70%); }
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+:focus-visible { outline: 2px solid var(--green-2); outline-offset: 4px; }

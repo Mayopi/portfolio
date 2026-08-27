@@ -1,0 +1,17 @@
+.flow-terminal { border: 1px solid rgba(200,152,253,.42); background: rgba(38,17,95,.16); }
+.flow-bar, .flow-footer { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 13px 16px; color: var(--copilot-1); font-size: 10px; }
+.flow-bar { border-bottom: 1px solid rgba(200,152,253,.24); }
+.flow-status { color: var(--gray-3); }
+.flow-status .status-dot { background: var(--copilot-3); box-shadow: 0 0 9px var(--copilot-3); }
+.flow-canvas { height: 430px; padding: 8px; overflow: hidden; }
+.flow-canvas .svelte-flow { min-width: 1120px; background: rgba(16,20,17,.82); }
+.flow-canvas .svelte-flow__background pattern circle { fill: rgba(200,152,253,.35); }
+.flow-canvas .svelte-flow__edge-path { stroke: rgba(200,152,253,.62); stroke-width: 2; stroke-dasharray: 7 8; }
+.flow-canvas .svelte-flow__edge.animated .svelte-flow__edge-path { animation-play-state: paused; }
+.flow-canvas.flow-active .svelte-flow__edge.animated .svelte-flow__edge-path { animation-play-state: running; }
+.flow-node-card { position: relative; min-width: 120px; padding: 14px; border: 1px solid rgba(200,152,253,.7); border-radius: 3px; color: var(--gray-1); background: rgba(16,20,17,.96); box-shadow: 0 0 0 1px rgba(133,52,243,.12); font: 600 12px 'JetBrains Mono', monospace; letter-spacing: .04em; }
+.flow-node-card span { display: block; margin-top: 8px; color: var(--copilot-1); font-size: 10px; font-weight: 400; }
+.flow-node-card .svelte-flow__handle { width: 10px; height: 10px; border: 2px solid var(--copilot-1); background: var(--black); }
+.flow-footer { border-top: 1px solid rgba(200,152,253,.24); color: var(--gray-4); }
+.flow-key { color: var(--copilot-1); white-space: nowrap; }
+.flow-key i { display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: var(--copilot-1); box-shadow: 0 0 7px var(--copilot-1); }

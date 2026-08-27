@@ -1,0 +1,40 @@
+@media (max-width: 900px) {
+  .hero-layout { grid-template-columns: 1fr; gap: 60px; }
+  .hero-status { max-width: 420px; }
+}
+
+@media (max-width: 760px) {
+  .app-shell { width: min(100% - 28px, 600px); }
+  .site-header { height: 72px; }
+  .menu-toggle { display: block; font-size: 11px; }
+  nav { display: none; position: absolute; z-index: 10; top: 72px; right: 14px; left: 14px; flex-direction: column; align-items: stretch; gap: 0; padding: 8px; border: 1px solid var(--line); background: var(--black-soft); }
+  nav.open { display: flex; }
+  nav a { padding: 13px 10px; }
+  .hero { min-height: auto; padding: 70px 0 90px; }
+  .boot-log { font-size: 10px; }
+  .ascii-mark { font-size: 7px; }
+  h1 { font-size: clamp(37px, 12vw, 65px); }
+  .hero-comment { font-size: 11px; }
+  .section, .contact-section { padding: 70px 0; }
+  .section-grid { display: block; }
+  .section-label { margin-bottom: 30px; }
+  .about-grid, .project-grid { grid-template-columns: 1fr; gap: 14px; }
+  .about-grid { gap: 32px; }
+  .project-card { min-height: 280px; }
+  .guitar-feature { grid-template-columns: 1fr; }
+  .ascii-guitar { font-size: 9px; }
+  .flow-canvas { height: 430px; padding: 4px; overflow-x: auto; }
+  .flow-canvas .svelte-flow { min-width: 1120px; }
+  .flow-footer { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .stack-row { grid-template-columns: 36px 1fr; gap: 12px; }
+  .stack-level { grid-column: 2; text-align: left; font-size: 10px; }
+  .contact-content, footer { display: block; }
+  .email-link { display: inline-flex; margin-top: 28px; }
+  footer span { display: block; margin-top: 7px; }
+  .ascii-guitar { height: 350px; min-height: 0; font-size: 6px; line-height: 6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .terminal-cursor, .section-heading h2::after { opacity: 1; }
+}
