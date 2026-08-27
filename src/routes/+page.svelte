@@ -10,6 +10,30 @@
   let profile: { avatar_url: string; public_repos: number; followers: number } | null = null;
   let profileState = 'loading github profile...';
 
+  function scrollReveal(node: HTMLElement) {
+    node.classList.add('scroll-reveal');
+    const pieces = [...node.querySelectorAll<HTMLElement>('.section-label, .section-heading, .section-body > *')];
+
+    pieces.forEach((piece, index) => {
+      piece.classList.add('reveal-piece');
+      piece.style.setProperty('--reveal-delay', `${Math.min(index * 80, 480)}ms`);
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      node.classList.add('is-visible');
+      return { destroy() {} };
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      node.classList.add('is-visible');
+      observer.disconnect();
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+
+    observer.observe(node);
+    return { destroy: () => observer.disconnect() };
+  }
+
   onMount(async () => {
     try {
       const response = await fetch('https://api.github.com/users/mayopi');
@@ -77,7 +101,7 @@
       </div>
     </section>
 
-    <section class="section section-grid theme-copilot" id="about" aria-labelledby="about-title">
+    <section use:scrollReveal class="section section-grid theme-copilot" id="about" aria-labelledby="about-title">
       <div class="section-label"><span>01</span><span>./about</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol">$</span><h2 id="about-title">cat about.txt</h2></div>
@@ -88,7 +112,7 @@
       </div>
     </section>
 
-    <section class="section theme-security" id="work" aria-labelledby="work-title">
+    <section use:scrollReveal class="section theme-security" id="work" aria-labelledby="work-title">
       <div class="section-label"><span>02</span><span>./work</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol">$</span><h2 id="work-title">ls -la ./selected-work</h2></div>
@@ -97,7 +121,7 @@
       </div>
     </section>
 
-    <section class="section github-section" id="github" aria-labelledby="github-title">
+    <section use:scrollReveal class="section github-section" id="github" aria-labelledby="github-title">
       <div class="section-label"><span>03</span><span>./github</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol">$</span><h2 id="github-title">gh activity --last-year</h2></div>
@@ -105,7 +129,7 @@
       </div>
     </section>
 
-    <section class="section section-grid" id="stack" aria-labelledby="stack-title">
+    <section use:scrollReveal class="section section-grid" id="stack" aria-labelledby="stack-title">
       <div class="section-label"><span>04</span><span>./stack</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol">$</span><h2 id="stack-title">cat stack.json</h2></div>
@@ -113,7 +137,7 @@
       </div>
     </section>
 
-    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+    <section use:scrollReveal class="section contact-section" id="contact" aria-labelledby="contact-title">
       <div class="section-label"><span>05</span><span>./contact</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol">$</span><h2 id="contact-title">open connection</h2></div>
