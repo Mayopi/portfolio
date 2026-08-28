@@ -87,7 +87,7 @@
           {#if reduceMotion}
             <h1 id="hero-title" aria-label="a frontend developer who likes making things feel obvious"><span>a frontend developer</span><br />who likes making<br />things feel obvious.</h1>
           {:else}
-            <Typewriter element="h1" mode="loop" interval={42} unwriteInterval={24} wordInterval={1800} cursor={true}><span id="hero-title" data-static>a frontend developer</span><span>who likes making
+            <Typewriter element="h1" mode="loopOnce" interval={42} unwriteInterval={24} wordInterval={1800} cursor={true} keepCursorOnFinish={true}><span id="hero-title" data-static>a frontend developer</span><span>who likes making
 things feel obvious.</span><span>who likes building
 useful things.</span><span>who likes removing
 friction.</span></Typewriter>
