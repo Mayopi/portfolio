@@ -1,7 +1,7 @@
 .guitar-feature { display: grid; grid-template-columns: minmax(300px, 430px) 1fr; gap: 38px; align-items: center; margin-bottom: 42px; padding: 20px; border: 1px solid rgba(48,148,255,.4); background: rgba(0,28,77,.26); }
-.guitar-terminal { border: 1px solid rgba(158,236,255,.45); background: rgba(0,28,77,.45); }
+.guitar-terminal { min-inline-size: 0; padding: 0; border: 1px solid rgba(158,236,255,.45); background: rgba(0,28,77,.45); }
 .guitar-terminal-bar, .guitar-terminal-footer { display: flex; justify-content: space-between; gap: 16px; padding: 12px 14px; color: var(--security-1); font-size: 10px; }
-.guitar-terminal-bar { border-bottom: 1px solid rgba(158,236,255,.25); }
+.guitar-terminal-bar { margin-left: 10px; padding: 0 8px; }
 .guitar-terminal-footer { border-top: 1px solid rgba(158,236,255,.25); color: var(--gray-4); }
 .ascii-guitar { display: block; width: 100%; height: 460px; min-height: 0; margin: 0; overflow: hidden; padding: 12px 8px; color: var(--security-1); font-size: 8px; font-weight: 600; font-variant-ligatures: none; line-height: 8px; white-space: pre; text-align: left; text-shadow: none; }
 .tone-highlight { color: var(--security-1); text-shadow: 0 0 8px rgba(158,236,255,.35); }

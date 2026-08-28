@@ -86,8 +86,8 @@
           <div class="hero-actions"><a class="button button-primary" href="#work">$ ls ./work <ArrowRight size={14} strokeWidth={1.8} /></a><a class="button button-quiet" href="#contact">$ ./connect <ArrowRight size={14} strokeWidth={1.8} /></a></div>
         </div>
 
-        <aside class="hero-status terminal-panel" aria-label="System status">
-          <div class="panel-title"><span>eri@portfolio:~ / status</span><span class="panel-dots">•••</span></div>
+        <fieldset class="hero-status terminal-panel" aria-label="System status">
+          <legend class="panel-title"><span>eri@portfolio:~ / status</span><span class="panel-dots">•••</span></legend>
           <div class="avatar-row">
             {#if profile}<img src={profile.avatar_url} alt="Eri GitHub avatar" />{:else}<div class="avatar-placeholder">E</div>{/if}
             <div><strong>eri / mayopi</strong><span class="muted">frontend developer</span></div>
@@ -99,7 +99,7 @@
             <div><span>uptime</span><strong>since 2023</strong></div>
           </div>
           <div class="api-status"><span class="status-dot"></span>{profileState}</div>
-        </aside>
+        </fieldset>
       </div>
     </section>
 

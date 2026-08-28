@@ -1,6 +1,6 @@
-.heatmap-terminal { border: 1px solid rgba(140,242,166,.28); background: rgba(10,36,27,.22); }
+.heatmap-terminal { min-inline-size: 0; padding: 0; border: 1px solid rgba(140,242,166,.28); background: rgba(10,36,27,.22); }
 .heatmap-bar, .heatmap-stats { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 14px 16px; color: var(--gray-4); font-size: 10px; }
-.heatmap-bar { border-bottom: 1px solid var(--line); color: var(--green-2); }
+.heatmap-bar { margin-left: 10px; padding: 0 8px; color: var(--green-2); }
 .heatmap-bar span:last-child { color: var(--green-4); }
 .heatmap-bar .heatmap-error { color: #f4a876; }
 .heatmap-scroll { overflow-x: auto; padding: 30px 16px; scrollbar-color: var(--green-5) transparent; }

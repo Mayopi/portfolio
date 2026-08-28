@@ -1,6 +1,6 @@
-.flow-terminal { border: 1px solid rgba(200,152,253,.42); background: rgba(38,17,95,.16); }
+.flow-terminal { min-inline-size: 0; padding: 0; border: 1px solid rgba(200,152,253,.42); background: rgba(38,17,95,.16); }
 .flow-bar, .flow-footer { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 13px 16px; color: var(--copilot-1); font-size: 10px; }
-.flow-bar { border-bottom: 1px solid rgba(200,152,253,.24); }
+.flow-bar { margin-left: 10px; padding: 0 8px; }
 .flow-status { color: var(--gray-3); }
 .flow-status .status-dot { background: var(--copilot-3); box-shadow: 0 0 9px var(--copilot-3); }
 .flow-canvas { height: 430px; padding: 8px; overflow: hidden; }

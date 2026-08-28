@@ -59,11 +59,11 @@
   });
 </script>
 
-<div class="heatmap-terminal" class:heatmap-loading={state === 'loading'}>
-  <div class="heatmap-bar">
+<fieldset class="heatmap-terminal" class:heatmap-loading={state === 'loading'}>
+  <legend class="heatmap-bar">
     <span>$ gh activity @{username} --range=1y</span>
     <span class:heatmap-error={state === 'error'}>{state === 'loading' ? '[sync]' : state === 'ready' ? '[ok]' : '[warn]'}</span>
-  </div>
+  </legend>
 
   <div class="heatmap-scroll">
     <div class="heatmap-layout">
@@ -99,4 +99,4 @@
     {/if}
     <span class="heatmap-legend" aria-label="Contribution intensity"><i></i><i></i><i></i><i></i><i></i></span>
   </div>
-</div>
+</fieldset>

@@ -202,15 +202,15 @@
   });
 </script>
 
-<div class="guitar-terminal" id="guitar" aria-label="Rotating shaded ASCII guitar">
-  <div class="guitar-terminal-bar">
+<fieldset class="guitar-terminal" id="guitar" aria-label="Rotating shaded ASCII guitar">
+  <legend class="guitar-terminal-bar">
     <span>$ ./guitar --rotate --shaded</span>
     <span bind:this={counter}>[rot 000°]</span>
-  </div>
+  </legend>
   <pre bind:this={canvas} class="ascii-guitar" aria-hidden="true"></pre>
   <div class="guitar-terminal-footer">
     <span><span class="status-dot"></span>{reducedMotion ? 'static mode' : 'rotation stream active'}</span>
     <span class="shade-key"><i class="tone-highlight">#</i><i class="tone-mid">+</i><i class="tone-shadow">.</i></span>
   </div>
   <span class="sr-only">Detailed shaded ASCII electric guitar. Rotation respects reduced-motion settings.</span>
-</div>
+</fieldset>

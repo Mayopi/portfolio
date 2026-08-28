@@ -41,12 +41,12 @@
   });
 </script>
 
-<div class="flow-terminal">
-  <div class="flow-bar"><span>$ flow render --route=placeholder</span><span class="flow-status"><span class="status-dot"></span>streaming</span></div>
+<fieldset class="flow-terminal">
+  <legend class="flow-bar"><span>$ flow render --route=placeholder</span><span class="flow-status"><span class="status-dot"></span>streaming</span></legend>
   <div bind:this={canvas} class:flow-active={active} class="flow-canvas">
     <SvelteFlow {nodes} {edges} {nodeTypes} fitView={true} fitViewOptions={{ padding: 0.15 }} nodesDraggable={false} nodesConnectable={false} panOnDrag={false} panOnScroll={false} zoomOnScroll={false} zoomOnPinch={false} preventScrolling={false}>
       <Background variant={BackgroundVariant.Dots} gap={22} size={1} />
     </SvelteFlow>
   </div>
   <div class="flow-footer"><span>// placeholder pipeline · replace with real project relationships</span><span class="flow-key"><i></i> active route</span></div>
-</div>
+</fieldset>

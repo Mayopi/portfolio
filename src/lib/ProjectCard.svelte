@@ -10,10 +10,10 @@
   };
 </script>
 
-<article class="project-card">
+<fieldset class="project-card">
+  <legend class="project-card-title">{project.title}</legend>
   <div class="project-card-top"><span class="project-number">{project.number}</span><span class="status"><span class="status-dot"></span>{project.status}</span></div>
-  <h3>{project.title}</h3>
   <p>{project.description}</p>
   <div class="tag-row" aria-label="Technologies">{#each project.tags as tag}<span>#{tag}</span>{/each}</div>
   <a class="text-link" href={project.href} target={project.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">inspect <ArrowUpRight size={13} strokeWidth={1.8} /></a>
-</article>
+</fieldset>
