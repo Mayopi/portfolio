@@ -1,6 +1,8 @@
 h1, h2, h3, p { margin-top: 0; }
 h1 { max-width: 760px; margin-bottom: 28px; color: var(--gray-1); font-size: clamp(37px, 5.5vw, 72px); line-height: 1.08; letter-spacing: -.08em; }
 h1 span { color: var(--gray-2); }
+h1.typewriter-container > span { display: block; white-space: pre-line; }
+.typewriter-container { --cursor-color: var(--green-2); --cursor-width: .68ch; }
 .boot-log { color: var(--gray-4); font-size: 12px; line-height: 2.2; margin-bottom: 54px; }
 .boot-log > div:first-child { color: var(--gray-2); margin-bottom: 4px; }
 .ok { color: var(--green-2); margin-right: 8px; }

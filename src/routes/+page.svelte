@@ -8,9 +8,11 @@
   import ProjectCard from '$lib/ProjectCard.svelte';
   import TerminalHeader from '$lib/TerminalHeader.svelte';
   import { Activity, ArrowRight, ArrowUpRight, GitFork, Terminal } from '@lucide/svelte';
+  import Typewriter from 'svelte-typewriter';
 
   let profile: { avatar_url: string; public_repos: number; followers: number } | null = null;
   let profileState = 'loading github profile...';
+  let reduceMotion = false;
 
   function scrollReveal(node: HTMLElement) {
     node.classList.add('scroll-reveal');
@@ -37,6 +39,7 @@
   }
 
   onMount(async () => {
+    reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     try {
       const response = await fetch('https://api.github.com/users/mayopi');
       if (!response.ok) throw new Error('request failed');
@@ -81,7 +84,14 @@
   ██╔══╝  ██╔══██╗██║
   ███████╗██║  ██║██║
   ╚══════╝╚═╝  ╚═╝╚═╝</pre>
-          <h1 id="hero-title"><span>a frontend developer</span><br />who likes making<br />things feel obvious.</h1>
+          {#if reduceMotion}
+            <h1 id="hero-title" aria-label="a frontend developer who likes making things feel obvious"><span>a frontend developer</span><br />who likes making<br />things feel obvious.</h1>
+          {:else}
+            <Typewriter element="h1" mode="loop" interval={42} unwriteInterval={24} wordInterval={1800} cursor={true}><span id="hero-title" data-static>a frontend developer</span><span>who likes making
+things feel obvious.</span><span>who likes building
+useful things.</span><span>who likes removing
+friction.</span></Typewriter>
+          {/if}
           <p class="hero-comment">// interfaces, experiments, and small useful tools<br />// built with care from banyumas, indonesia</p>
           <div class="hero-actions"><a class="button button-primary" href="#work">$ ls ./work <ArrowRight size={14} strokeWidth={1.8} /></a><a class="button button-quiet" href="#contact">$ ./connect <ArrowRight size={14} strokeWidth={1.8} /></a></div>
         </div>

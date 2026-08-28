@@ -15,7 +15,8 @@
     "@sveltejs/adapter-auto": "^4.0.0",
     "@sveltejs/kit": "^2.0.0",
     "@xyflow/svelte": "^1.6.5",
-    "svelte": "^5.0.0"
+    "svelte": "^5.0.0",
+    "svelte-typewriter": "^3.2.3"
   },
   "devDependencies": {
     "@sveltejs/adapter-vercel": "^6.3.4",
