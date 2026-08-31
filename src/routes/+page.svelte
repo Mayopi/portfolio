@@ -1,7 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import AsciiGuitar from '$lib/AsciiGuitar.svelte';
   import CommandPrompt from '$lib/CommandPrompt.svelte';
-  import LazyComponent from '$lib/LazyComponent.svelte';
+  import FlowSection from '$lib/FlowSection.svelte';
+  import GitHubHeatmap from '$lib/GitHubHeatmap.svelte';
   import { projects, stack } from '$lib/content';
   import ProjectCard from '$lib/ProjectCard.svelte';
   import TerminalHeader from '$lib/TerminalHeader.svelte';
@@ -121,7 +123,7 @@ friction.</span></Typewriter>
       <div class="section-label"><span>02</span><span>./work</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol"><Terminal size={14} strokeWidth={1.8} /></span><h2 id="work-title">ls -la ./selected-work</h2></div>
-        <div class="guitar-feature" id="guitar"><LazyComponent load={() => import('$lib/AsciiGuitar.svelte')} minHeight="520px" /><div class="guitar-copy"><span class="feature-label">// hobby process</span><p class="large-copy">When screen time gets loud, I pick up a guitar. This one now lives in the terminal.</p><p class="muted">No canvas. No heavy asset. Just text frames, a timer, and a little rhythm.</p></div></div>
+        <div class="guitar-feature" id="guitar"><AsciiGuitar /><div class="guitar-copy"><span class="feature-label">// hobby process</span><p class="large-copy">When screen time gets loud, I pick up a guitar. This one now lives in the terminal.</p><p class="muted">No canvas. No heavy asset. Just text frames, a timer, and a little rhythm.</p></div></div>
         <div class="project-grid">{#each projects as project}<ProjectCard {project} />{/each}</div>
       </div>
     </section>
@@ -130,7 +132,7 @@ friction.</span></Typewriter>
       <div class="section-label"><span>03</span><span>./flow</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol"><Terminal size={14} strokeWidth={1.8} /></span><h2 id="flow-title">flow render --placeholder</h2></div>
-        <LazyComponent load={() => import('$lib/FlowSection.svelte')} minHeight="520px" eager />
+        <FlowSection />
       </div>
     </section>
 
@@ -138,7 +140,7 @@ friction.</span></Typewriter>
       <div class="section-label"><span>04</span><span>./github</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol"><Activity size={14} strokeWidth={1.8} /></span><h2 id="github-title">gh activity --last-year</h2></div>
-        <LazyComponent load={() => import('$lib/GitHubHeatmap.svelte')} minHeight="260px" eager />
+        <GitHubHeatmap username="mayopi" />
       </div>
     </section>
 
