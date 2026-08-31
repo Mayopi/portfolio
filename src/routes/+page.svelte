@@ -130,7 +130,7 @@ friction.</span></Typewriter>
       <div class="section-label"><span>03</span><span>./flow</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol"><Terminal size={14} strokeWidth={1.8} /></span><h2 id="flow-title">flow render --placeholder</h2></div>
-        <LazyComponent load={() => import('$lib/FlowSection.svelte')} minHeight="520px" />
+        <LazyComponent load={() => import('$lib/FlowSection.svelte')} minHeight="520px" eager />
       </div>
     </section>
 
@@ -138,7 +138,7 @@ friction.</span></Typewriter>
       <div class="section-label"><span>04</span><span>./github</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol"><Activity size={14} strokeWidth={1.8} /></span><h2 id="github-title">gh activity --last-year</h2></div>
-        <LazyComponent load={() => import('$lib/GitHubHeatmap.svelte')} minHeight="260px" />
+        <LazyComponent load={() => import('$lib/GitHubHeatmap.svelte')} minHeight="260px" eager />
       </div>
     </section>
 

@@ -3,6 +3,7 @@
 
   export let load: () => Promise<{ default: any }>;
   export let minHeight = '0px';
+  export let eager = false;
 
   let host: HTMLDivElement;
   let LoadedComponent: any = null;
@@ -20,6 +21,11 @@
   }
 
   onMount(() => {
+    if (eager) {
+      void loadComponent();
+      return;
+    }
+
     const checkVisibility = () => {
       if (host.getBoundingClientRect().top < window.innerHeight + 240) void loadComponent();
     };
