@@ -71,6 +71,7 @@ h1.typewriter-container > span { display: block; white-space: pre-line; }
 .stack-level { text-align: right; }
 .contact-section { padding-bottom: 70px; }
 .lazy-component { min-width: 0; }
+.lazy-error { min-height: inherit; display: grid; place-items: center; color: var(--gray-4); font-size: 11px; }
 .contact-content { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
 .contact-content .large-copy { margin-bottom: 10px; }
 .email-link { display: inline-flex; align-items: center; gap: 8px; color: var(--green-2); font-size: clamp(18px, 3vw, 30px); letter-spacing: -.06em; }
