@@ -19,7 +19,7 @@ h1.typewriter-container > span { display: block; white-space: pre-line; }
 .panel-title { padding: 0 8px; color: var(--gray-4); font-size: 10px; }
 .panel-dots { display: none; }
 .avatar-row { display: flex; align-items: center; gap: 14px; padding: 26px 0; border-bottom: 1px solid var(--line); }
-.avatar-placeholder { width: 48px; height: 48px; border: 1px solid var(--green-4); object-fit: cover; }
+.avatar-row img, .avatar-placeholder { width: 48px; height: 48px; border: 1px solid var(--green-4); object-fit: cover; }
 .avatar-placeholder { display: grid; place-items: center; color: var(--black); background: var(--green-2); font-weight: 800; }
 .avatar-row strong, .avatar-row .muted { display: block; font-size: 12px; }
 .muted { color: var(--gray-4); }

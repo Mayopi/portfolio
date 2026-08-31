@@ -10,7 +10,8 @@
   import { Activity, ArrowRight, ArrowUpRight, GitFork, Terminal } from '@lucide/svelte';
   import Typewriter from 'svelte-typewriter';
 
-  let profileState = 'github profile ready · static mode';
+  let profile: { avatar_url: string; public_repos: number; followers: number } | null = null;
+  let profileState = 'loading github profile...';
   let reduceMotion = false;
   let typewriterReady = false;
 
@@ -43,6 +44,23 @@
     if (!reduceMotion) {
       requestAnimationFrame(() => (typewriterReady = true));
     }
+
+    const controller = new AbortController();
+    fetch('https://api.github.com/users/mayopi', { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error('profile request failed');
+        return response.json() as Promise<{ avatar_url: string; public_repos: number; followers: number }>;
+      })
+      .then((data) => {
+        profile = data;
+        profileState = `github api connected · ${data.public_repos} repos`;
+      })
+      .catch((error) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return;
+        profileState = 'github api unavailable · retry later';
+      });
+
+    return () => controller.abort();
   });
 </script>
 
@@ -94,7 +112,11 @@ friction.</span></Typewriter>
         <fieldset class="hero-status terminal-panel" aria-label="System status">
           <legend class="panel-title"><span>eri@portfolio:~ / status</span><span class="panel-dots">•••</span></legend>
           <div class="avatar-row">
-            <div class="avatar-placeholder" aria-hidden="true">E</div>
+            {#if profile}
+              <img src={`${profile.avatar_url}${profile.avatar_url.includes('?') ? '&' : '?'}s=96`} alt="Eri GitHub avatar" width="48" height="48" decoding="async" />
+            {:else}
+              <div class="avatar-placeholder" aria-hidden="true">E</div>
+            {/if}
             <div><strong>eri / mayopi</strong><span class="muted">frontend developer</span></div>
           </div>
           <div class="status-list">
