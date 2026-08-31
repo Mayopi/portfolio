@@ -97,6 +97,6 @@
     {:else}
       <span>// fetching contribution graph...</span>
     {/if}
-    <span class="heatmap-legend" aria-label="Contribution intensity"><i></i><i></i><i></i><i></i><i></i></span>
+    <span class="heatmap-legend" role="img" aria-label="Contribution intensity"><i></i><i></i><i></i><i></i><i></i></span>
   </div>
 </fieldset>

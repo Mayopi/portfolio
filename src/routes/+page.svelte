@@ -1,18 +1,16 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import AsciiGuitar from '$lib/AsciiGuitar.svelte';
   import CommandPrompt from '$lib/CommandPrompt.svelte';
-  import GitHubHeatmap from '$lib/GitHubHeatmap.svelte';
-  import FlowSection from '$lib/FlowSection.svelte';
+  import LazyComponent from '$lib/LazyComponent.svelte';
   import { projects, stack } from '$lib/content';
   import ProjectCard from '$lib/ProjectCard.svelte';
   import TerminalHeader from '$lib/TerminalHeader.svelte';
   import { Activity, ArrowRight, ArrowUpRight, GitFork, Terminal } from '@lucide/svelte';
   import Typewriter from 'svelte-typewriter';
 
-  let profile: { avatar_url: string; public_repos: number; followers: number } | null = null;
-  let profileState = 'loading github profile...';
+  let profileState = 'github profile ready · static mode';
   let reduceMotion = false;
+  let typewriterReady = false;
 
   function scrollReveal(node: HTMLElement) {
     node.classList.add('scroll-reveal');
@@ -38,15 +36,10 @@
     return { destroy: () => observer.disconnect() };
   }
 
-  onMount(async () => {
+  onMount(() => {
     reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    try {
-      const response = await fetch('https://api.github.com/users/mayopi');
-      if (!response.ok) throw new Error('request failed');
-      profile = await response.json();
-      profileState = 'github api connected';
-    } catch {
-      profileState = 'github api unavailable · static mode';
+    if (!reduceMotion) {
+      requestAnimationFrame(() => (typewriterReady = true));
     }
   });
 </script>
@@ -84,7 +77,7 @@
   ██╔══╝  ██╔══██╗██║
   ███████╗██║  ██║██║
   ╚══════╝╚═╝  ╚═╝╚═╝</pre>
-          {#if reduceMotion}
+          {#if reduceMotion || !typewriterReady}
             <h1 id="hero-title" aria-label="a frontend developer who likes making things feel obvious"><span>a frontend developer</span><br />who likes making<br />things feel obvious.</h1>
           {:else}
             <Typewriter element="h1" mode="loopOnce" interval={42} unwriteInterval={24} wordInterval={1800} cursor={true} keepCursorOnFinish={true}><span id="hero-title" data-static>a frontend developer</span><span>who likes making
@@ -99,7 +92,7 @@ friction.</span></Typewriter>
         <fieldset class="hero-status terminal-panel" aria-label="System status">
           <legend class="panel-title"><span>eri@portfolio:~ / status</span><span class="panel-dots">•••</span></legend>
           <div class="avatar-row">
-            {#if profile}<img src={profile.avatar_url} alt="Eri GitHub avatar" />{:else}<div class="avatar-placeholder">E</div>{/if}
+            <div class="avatar-placeholder" aria-hidden="true">E</div>
             <div><strong>eri / mayopi</strong><span class="muted">frontend developer</span></div>
           </div>
           <div class="status-list">
@@ -128,7 +121,7 @@ friction.</span></Typewriter>
       <div class="section-label"><span>02</span><span>./work</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol"><Terminal size={14} strokeWidth={1.8} /></span><h2 id="work-title">ls -la ./selected-work</h2></div>
-        <div class="guitar-feature"><AsciiGuitar /><div class="guitar-copy"><span class="feature-label">// hobby process</span><p class="large-copy">When screen time gets loud, I pick up a guitar. This one now lives in the terminal.</p><p class="muted">No canvas. No heavy asset. Just text frames, a timer, and a little rhythm.</p></div></div>
+        <div class="guitar-feature" id="guitar"><LazyComponent load={() => import('$lib/AsciiGuitar.svelte')} minHeight="520px" /><div class="guitar-copy"><span class="feature-label">// hobby process</span><p class="large-copy">When screen time gets loud, I pick up a guitar. This one now lives in the terminal.</p><p class="muted">No canvas. No heavy asset. Just text frames, a timer, and a little rhythm.</p></div></div>
         <div class="project-grid">{#each projects as project}<ProjectCard {project} />{/each}</div>
       </div>
     </section>
@@ -137,7 +130,7 @@ friction.</span></Typewriter>
       <div class="section-label"><span>03</span><span>./flow</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol"><Terminal size={14} strokeWidth={1.8} /></span><h2 id="flow-title">flow render --placeholder</h2></div>
-        <FlowSection />
+        <LazyComponent load={() => import('$lib/FlowSection.svelte')} minHeight="520px" />
       </div>
     </section>
 
@@ -145,7 +138,7 @@ friction.</span></Typewriter>
       <div class="section-label"><span>04</span><span>./github</span></div>
       <div class="section-body">
         <div class="section-heading"><span class="prompt-symbol"><Activity size={14} strokeWidth={1.8} /></span><h2 id="github-title">gh activity --last-year</h2></div>
-        <GitHubHeatmap username="mayopi" />
+        <LazyComponent load={() => import('$lib/GitHubHeatmap.svelte')} minHeight="260px" />
       </div>
     </section>
 

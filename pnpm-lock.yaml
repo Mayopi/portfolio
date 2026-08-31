@@ -8,12 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/jetbrains-mono':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@lucide/svelte':
         specifier: ^1.34.0
         version: 1.34.0(svelte@5.56.10(@typescript-eslint/types@8.46.2))
-      '@sveltejs/adapter-auto':
-        specifier: ^4.0.0
-        version: 4.0.0(@sveltejs/kit@2.70.3(@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.56.10(@typescript-eslint/types@8.46.2))(vite@7.3.6(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.56.10(@typescript-eslint/types@8.46.2))(typescript@5.9.3)(vite@7.3.6(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))
       '@sveltejs/kit':
         specifier: ^2.0.0
         version: 2.70.3(@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.56.10(@typescript-eslint/types@8.46.2))(vite@7.3.6(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.56.10(@typescript-eslint/types@8.46.2))(typescript@5.9.3)(vite@7.3.6(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2))
@@ -200,6 +200,9 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource/jetbrains-mono@5.3.0':
+    resolution: {integrity: sha512-fqDfB5I9f1p1TV486aUgB9t8zP84P0O1FtQR5Ol9vjwPy+S+EIGlVYm1cvj2W5shcZMTg2nZFdVMoH5wFu8a1A==}
 
   '@formatjs/ecma402-abstract@2.3.6':
     resolution: {integrity: sha512-HJnTFeRM2kVFVr5gr5kH1XP6K0JcJtE7Lzvtr3FS/so5f1kpsqqqxy5JF+FRaO6H2qmcMfAUIox7AJteieRtVw==}
@@ -412,11 +415,6 @@ packages:
     resolution: {integrity: sha512-wgKggnhZVL9Bfx1OaKKTrYY9BFRk6C8UAkQNUcIv1+llzYrIqy+RZm5HPKzn0NpEBvTVhTqB4kQyllZywsRBRQ==}
     peerDependencies:
       acorn: ^8.9.0
-
-  '@sveltejs/adapter-auto@4.0.0':
-    resolution: {integrity: sha512-kmuYSQdD2AwThymQF0haQhM8rE5rhutQXG4LNbnbShwhMO4qQGnKaaTy+88DuNSuoQDi58+thpq8XpHc1+oEKQ==}
-    peerDependencies:
-      '@sveltejs/kit': ^2.0.0
 
   '@sveltejs/adapter-vercel@6.3.4':
     resolution: {integrity: sha512-MxEgTqIlmNg4qy5Rz4vwDKs2vNUrsL+DjcfegUVr/spPWSvWrSYFTUPY7tLbHsi8RxdUqpxC9UN/yzkOzZeMGA==}
@@ -681,9 +679,6 @@ packages:
   https-proxy-agent@7.0.6:
     resolution: {integrity: sha512-vK9P5/iUfdl95AI+JVyUuIcVtd4ofvtrOr3HNtM2yxC9bnMbEdp3x01OhQNnjb8IJYi38VlTE3mBXwcfvywuSw==}
     engines: {node: '>= 14'}
-
-  import-meta-resolve@4.2.0:
-    resolution: {integrity: sha512-Iqv2fzaTQN28s/FwZAoFq0ZSs/7hMAHJVX+w8PZl3cY19Pxk6jFFalxQoIfW2826i/fDLXv8IiEZRIT0lDuWcg==}
 
   is-reference@3.0.3:
     resolution: {integrity: sha512-ixkJoqQvAP88E6wLydLGGqCJsrFUnqoH6HnaczB8XmDH1oaWU+xxdptvikTgaEhtZ53Ky6YXiBuUI2WXLMCwjw==}
@@ -1066,6 +1061,8 @@ snapshots:
   '@esbuild/win32-x64@0.28.2':
     optional: true
 
+  '@fontsource/jetbrains-mono@5.3.0': {}
+
   '@formatjs/ecma402-abstract@2.3.6':
     dependencies:
       '@formatjs/fast-memoize': 2.2.7
@@ -1228,11 +1225,6 @@ snapshots:
   '@sveltejs/acorn-typescript@1.0.13(acorn@8.18.0)':
     dependencies:
       acorn: 8.18.0
-
-  '@sveltejs/adapter-auto@4.0.0(@sveltejs/kit@2.70.3(@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.56.10(@typescript-eslint/types@8.46.2))(vite@7.3.6(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.56.10(@typescript-eslint/types@8.46.2))(typescript@5.9.3)(vite@7.3.6(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))':
-    dependencies:
-      '@sveltejs/kit': 2.70.3(@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.56.10(@typescript-eslint/types@8.46.2))(vite@7.3.6(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.56.10(@typescript-eslint/types@8.46.2))(typescript@5.9.3)(vite@7.3.6(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2))
-      import-meta-resolve: 4.2.0
 
   '@sveltejs/adapter-vercel@6.3.4(@sveltejs/kit@2.70.3(@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.56.10(@typescript-eslint/types@8.46.2))(vite@7.3.6(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.56.10(@typescript-eslint/types@8.46.2))(typescript@5.9.3)(vite@7.3.6(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(rollup@4.63.0)':
     dependencies:
@@ -1507,8 +1499,6 @@ snapshots:
       debug: 4.4.3
     transitivePeerDependencies:
       - supports-color
-
-  import-meta-resolve@4.2.0: {}
 
   is-reference@3.0.3:
     dependencies:

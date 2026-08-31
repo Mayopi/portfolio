@@ -22,6 +22,7 @@
   .about-grid { gap: 32px; }
   .project-card { min-height: 280px; }
   .guitar-feature { grid-template-columns: 1fr; }
+  .guitar-feature > .lazy-component { width: 100%; }
   .ascii-guitar { font-size: 9px; }
   .flow-canvas { height: 430px; padding: 4px; overflow-x: auto; }
   .flow-canvas .svelte-flow { min-width: 1120px; }

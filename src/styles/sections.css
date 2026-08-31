@@ -1,5 +1,5 @@
 h1, h2, h3, p { margin-top: 0; }
-h1 { max-width: 760px; margin-bottom: 28px; color: var(--gray-1); font-size: clamp(37px, 5.5vw, 72px); line-height: 1.08; letter-spacing: -.08em; }
+h1 { max-width: 760px; min-height: 3.24em; margin-bottom: 28px; color: var(--gray-1); font-size: clamp(37px, 5.5vw, 72px); line-height: 1.08; letter-spacing: -.08em; }
 h1 span { color: var(--gray-2); }
 h1.typewriter-container > span { display: block; white-space: pre-line; }
 .typewriter-container { --cursor-color: var(--green-2); --cursor-width: .68ch; }
@@ -19,7 +19,7 @@ h1.typewriter-container > span { display: block; white-space: pre-line; }
 .panel-title { padding: 0 8px; color: var(--gray-4); font-size: 10px; }
 .panel-dots { display: none; }
 .avatar-row { display: flex; align-items: center; gap: 14px; padding: 26px 0; border-bottom: 1px solid var(--line); }
-.avatar-row img, .avatar-placeholder { width: 48px; height: 48px; border: 1px solid var(--green-4); object-fit: cover; }
+.avatar-placeholder { width: 48px; height: 48px; border: 1px solid var(--green-4); object-fit: cover; }
 .avatar-placeholder { display: grid; place-items: center; color: var(--black); background: var(--green-2); font-weight: 800; }
 .avatar-row strong, .avatar-row .muted { display: block; font-size: 12px; }
 .muted { color: var(--gray-4); }
@@ -70,6 +70,7 @@ h1.typewriter-container > span { display: block; white-space: pre-line; }
 .stack-row strong { color: var(--gray-2); font-weight: 500; }
 .stack-level { text-align: right; }
 .contact-section { padding-bottom: 70px; }
+.lazy-component { min-width: 0; }
 .contact-content { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
 .contact-content .large-copy { margin-bottom: 10px; }
 .email-link { display: inline-flex; align-items: center; gap: 8px; color: var(--green-2); font-size: clamp(18px, 3vw, 30px); letter-spacing: -.06em; }
