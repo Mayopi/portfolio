@@ -153,7 +153,7 @@ friction.</span></Typewriter>
     <section use:scrollReveal class="section flow-section theme-copilot" id="flow" aria-labelledby="flow-title">
       <div class="section-label"><span>03</span><span>./flow</span></div>
       <div class="section-body">
-        <div class="section-heading"><span class="prompt-symbol"><Terminal size={14} strokeWidth={1.8} /></span><h2 id="flow-title">flow render --placeholder</h2></div>
+        <div class="section-heading"><span class="prompt-symbol"><Terminal size={14} strokeWidth={1.8} /></span><h2 id="flow-title">cat experience.log</h2></div>
         <FlowSection />
       </div>
     </section>
