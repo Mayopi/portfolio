@@ -65,7 +65,7 @@
 </script>
 
 <svelte:head>
-  <title>Eri — frontend developer</title>
+  <title>Eri | frontend developer</title>
   <meta name="description" content="Eri's terminal-native portfolio: frontend development, experiments, and open source." />
 </svelte:head>
 
